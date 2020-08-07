@@ -1,0 +1,10 @@
+@import "~bootswatch/dist/pulse/variables";
+@import './bootstrap_custom.scss';
+@import "~bootswatch/dist/pulse/bootswatch";
+
+@import "./books";
+
+body {
+  // Space for the fixed header, and a little extra to look nice
+  padding-top: 120px;
+}

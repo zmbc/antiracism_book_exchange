@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Antiracism Book Exchange
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body{ :'class' => "#{controller_name} #{action_name}" }
+    %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
+      %a.navbar-brand{href: '/'} Antiracism Book Exchange
+      %button.navbar-toggler{type: "button", data: {toggle: "collapse", target: "#main-nav"}, :'aria-controls' => "main-nav", :'aria-expanded' => "false", :'aria-label' => "Toggle navigation"}
+        %span.navbar-toggler-icon
+      .collapse.navbar-collapse#main-nav
+        %ul.navbar-nav.mr-auto
+          %li.nav-item
+            %a.nav-link{href: '/'} Home
+          %li.nav-item
+            %a.nav-link{href: '/books'} Books
+          %li.nav-item
+            %a.nav-link{href: '/offer'} Offer a Book
+          %li.nav-item
+            %a.nav-link{href: '/contact-us'} Contact Us
+    .container
+      = yield

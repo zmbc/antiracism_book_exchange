@@ -1,0 +1,11 @@
+%h1.mb-3 Books
+.row
+  - @books.each do |b|
+    .col-lg-4.mb-3
+      .card.border-primary
+        .card-body
+          %h4.card-title=b.title
+          %h5.card-subtitle.text-muted.mb-2 #{b.author} (#{b.year})
+          %p.card-text
+            = b.copies_available
+            copies available
