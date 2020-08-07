@@ -5,3 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Book.destroy_all
+
+Book.create(
+  title: 'So You Want To Talk About Race',
+  author: 'Ijeoma Oluo',
+  year: 2018,
+  goodreads_url: 'https://www.goodreads.com/book/show/35099718-so-you-want-to-talk-about-race',
+  copies_available: 0,
+  waitlist_length: 0,
+  editions: [
+    Edition.new(name: 'Paperback', width_inches: 5.8, length_inches: 8.4, height_inches: 0.9, weight_ounces: 8.0)
+  ]
+)
+
+Book.create(
+  title: 'How to Be an Antiracist',
+  author: 'Ibram X. Kendi',
+  year: 2019,
+  goodreads_url: 'https://www.goodreads.com/book/show/35099718-so-you-want-to-talk-about-race',
+  copies_available: 0,
+  waitlist_length: 0,
+  editions: [
+    Edition.new(name: 'Hardcover', width_inches: 5.8, length_inches: 8.6, height_inches: 1.1, weight_ounces: 15.2)
+  ]
+)
