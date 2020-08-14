@@ -22,5 +22,21 @@
             %a.nav-link{href: '/offer'} Offer a Book
           %li.nav-item
             %a.nav-link{href: '/contact-us'} Contact Us
+        %ul.navbar-nav.ml-auto
+          - if current_user.nil?
+            %li.nav-item
+              = link_to 'Sign in', new_user_session_path, class: 'nav-link'
+          - else
+            %li.nav-item.dropdown
+              %a#navbarDropdown.nav-link.dropdown-toggle{href: '#', role: 'button', :'aria-haspopup' => true, :'aria-expanded' => false, data: {toggle: 'dropdown'}}
+                = current_user.full_name
+              .dropdown-menu{:'aria-labelledby' => 'navbarDropdown'}
+                %a.dropdown-item{href: '#'} Action
+                .dropdown-divider
+                = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
     .container
+      - unless alert.nil?
+        .alert.alert-danger= alert
+      -unless notice.nil?
+        .alert.alert-info= notice
       = yield

@@ -6,9 +6,25 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.destroy_all
+
+user = User.new(
+  email: 'admin@antiracismbookexchange.com',
+  password: '123456',
+  password_confirmation: '123456',
+  full_name: 'Admin Admin',
+  street: '777 Brockton Avenue',
+  street2: '',
+  city: 'Abington',
+  state: 'MA',
+  postal_code: '2351'
+)
+user.skip_confirmation!
+user.save!
+
 Book.destroy_all
 
-Book.create(
+Book.create!(
   title: 'So You Want To Talk About Race',
   author: 'Ijeoma Oluo',
   year: 2018,
@@ -20,7 +36,7 @@ Book.create(
   ]
 )
 
-Book.create(
+Book.create!(
   title: 'How to Be an Antiracist',
   author: 'Ibram X. Kendi',
   year: 2019,
