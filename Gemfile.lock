@@ -103,6 +103,7 @@ GEM
       haml (>= 4.0.6, < 6.0)
       html2haml (>= 1.0.1)
       railties (>= 5.1)
+    honeybadger (4.7.1)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -304,6 +305,7 @@ DEPENDENCIES
   devise
   easypost
   haml-rails (~> 2.0)
+  honeybadger (~> 4.0)
   jbuilder (~> 2.7)
   letter_opener
   listen (~> 3.2)

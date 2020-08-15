@@ -38,6 +38,8 @@ gem 'mainstreet'
 gem 'cancancan'
 gem 'devise'
 
+gem 'honeybadger', '~> 4.0'
+
 gem 'rails_admin', '~> 2.0'
 
 group :development, :test do
