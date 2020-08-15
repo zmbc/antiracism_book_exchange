@@ -10,6 +10,7 @@ User.destroy_all
 
 user = User.new(
   email: 'admin@antiracismbookexchange.com',
+  admin: true,
   password: '123456',
   password_confirmation: '123456',
   full_name: 'Admin Admin',
@@ -23,6 +24,7 @@ user.skip_confirmation!
 user.save!
 
 Book.destroy_all
+Edition.destroy_all
 
 Book.create!(
   title: 'So You Want To Talk About Race',
@@ -41,7 +43,7 @@ Book.create!(
   author: 'Ibram X. Kendi',
   year: 2019,
   goodreads_url: 'https://www.goodreads.com/book/show/35099718-so-you-want-to-talk-about-race',
-  copies_available: 0,
+  copies_available: 1,
   waitlist_length: 0,
   editions: [
     Edition.new(name: 'Hardcover', width_inches: 5.8, length_inches: 8.6, height_inches: 1.1, weight_ounces: 15.2)

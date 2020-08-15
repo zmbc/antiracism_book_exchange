@@ -31,7 +31,8 @@
               %a#navbarDropdown.nav-link.dropdown-toggle{href: '#', role: 'button', :'aria-haspopup' => true, :'aria-expanded' => false, data: {toggle: 'dropdown'}}
                 = current_user.full_name
               .dropdown-menu{:'aria-labelledby' => 'navbarDropdown'}
-                %a.dropdown-item{href: '#'} Action
+                - if current_user.admin?
+                  %a.dropdown-item{href: '/admin'} Admin
                 .dropdown-divider
                 = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
     .container

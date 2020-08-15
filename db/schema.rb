@@ -10,26 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_13_214314) do
+ActiveRecord::Schema.define(version: 2020_08_15_015147) do
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "title"
-    t.string "author"
-    t.integer "year"
+    t.string "title", null: false
+    t.string "author", null: false
+    t.integer "year", null: false
     t.string "goodreads_url"
-    t.integer "copies_available"
-    t.integer "waitlist_length"
+    t.integer "copies_available", null: false
+    t.integer "waitlist_length", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "copies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "edition_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "status", null: false
+    t.string "tracker_id"
+    t.string "easypost_tracking_url"
+    t.datetime "received_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["edition_id"], name: "index_copies_on_edition_id"
+    t.index ["user_id"], name: "index_copies_on_user_id"
+  end
+
   create_table "editions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "book_id"
-    t.string "name"
-    t.decimal "width_inches", precision: 15, scale: 2
-    t.decimal "length_inches", precision: 15, scale: 2
-    t.decimal "height_inches", precision: 15, scale: 2
-    t.decimal "weight_ounces", precision: 15, scale: 2
+    t.bigint "book_id", null: false
+    t.string "name", null: false
+    t.decimal "width_inches", precision: 15, scale: 2, null: false
+    t.decimal "length_inches", precision: 15, scale: 2, null: false
+    t.decimal "height_inches", precision: 15, scale: 2, null: false
+    t.decimal "weight_ounces", precision: 15, scale: 2, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_editions_on_book_id"
@@ -58,9 +71,12 @@ ActiveRecord::Schema.define(version: 2020_08_13_214314) do
     t.string "city", null: false
     t.string "state", null: false
     t.string "postal_code", null: false
+    t.boolean "admin", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "copies", "editions"
+  add_foreign_key "copies", "users"
 end

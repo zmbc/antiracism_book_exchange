@@ -4,8 +4,16 @@
     .col-lg-4.mb-3
       .card.border-primary
         .card-body
-          %h4.card-title=b.title
+          %h4.card-title= b.title
           %h5.card-subtitle.text-muted.mb-2 #{b.author} (#{b.year})
-          %p.card-text
-            = b.copies_available
-            copies available
+          - if b.copies_available > 0
+            %p.card-text.text-success
+              = b.copies_available
+              = 'copy'.pluralize b.copies_available
+              available
+          - else
+            %p.card-text.text-warning
+              = b.waitlist_length
+              people in waitlist
+          = link_to 'I have this book', list_copy_book_path(b), class: 'btn btn-primary'
+          = link_to 'I want this book', reserve_copy_book_path(b), class: 'btn btn-secondary'

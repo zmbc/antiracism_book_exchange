@@ -9,6 +9,8 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
+# Use haml for templates
+gem 'haml-rails', '~> 2.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -28,12 +30,15 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# Mail-related gems
 gem 'easypost'
 gem 'mainstreet'
 
+# Authentication and authorization
+gem 'cancancan'
 gem 'devise'
 
-gem 'haml-rails', '~> 2.0'
+gem 'rails_admin', '~> 2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

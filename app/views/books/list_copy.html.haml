@@ -1,0 +1,17 @@
+%h1 List your copy of #{@book.title}
+= form_with do
+  .form-group
+    = label_tag :edition_id, 'Which edition do you have?'
+    = select_tag :edition_id, options_from_collection_for_select(@book.editions, :id, :name), class: 'form-control'
+    - @book.editions.each do |e|
+      %p.d-none{data: {edition: e.id}}
+        Please confirm that your copy is #{e.length_inches}" x #{e.width_inches}" x
+        #{e.height_inches}" and weighs about #{e.weight_ounces} ounces. This needs
+        to be correct to calculate accurate postage.
+  .form-group
+    = check_box_tag :printer_access, class: 'form-control'
+    = label_tag :printer_access, 'I have access to a printer to print a shipping label'
+  .form-group
+    = check_box_tag :box_access, class: 'form-control'
+    = label_tag :box_access, 'I have access to a box or mailer to ship this book in'
+  = submit_tag 'List', class: 'btn btn-primary'
