@@ -1,25 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  author: MyString
-  year: 
-  goodreads_url: MyString
-  width: 
-  length: 
-  height: 
-  weight: 
-  copies_available: 
-  waitlist_length: 
+available:
+  title: So You Want to Talk about Race
+  author: Ijeoma Oluo
+  year: 2018
+  goodreads_url: https://www.goodreads.com/book/show/35099718-so-you-want-to-talk-about-race
+  copies_available: 3
+  waitlist_length: 0
 
-two:
-  title: MyString
-  author: MyString
-  year: 
+waitlisted:
+  title: How to Be an Antiracist
+  author: Ibram X. Kendi
+  year: 2019
   goodreads_url: MyString
-  width: 
-  length: 
-  height: 
-  weight: 
-  copies_available: 
-  waitlist_length: 
+  copies_available: 0
+  waitlist_length: 3

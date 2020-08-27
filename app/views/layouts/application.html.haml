@@ -1,12 +1,14 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
     %title Antiracism Book Exchange
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stripe_javascript_tag
   %body{ :'class' => "#{controller_name} #{action_name}" }
     %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
       %a.navbar-brand{href: '/'} Antiracism Book Exchange

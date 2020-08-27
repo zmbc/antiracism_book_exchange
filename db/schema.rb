@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_15_015147) do
+ActiveRecord::Schema.define(version: 2020_08_24_010753) do
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title", null: false
@@ -27,9 +27,6 @@ ActiveRecord::Schema.define(version: 2020_08_15_015147) do
     t.bigint "edition_id", null: false
     t.bigint "user_id", null: false
     t.integer "status", null: false
-    t.string "tracker_id"
-    t.string "easypost_tracking_url"
-    t.datetime "received_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["edition_id"], name: "index_copies_on_edition_id"
@@ -46,6 +43,27 @@ ActiveRecord::Schema.define(version: 2020_08_15_015147) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_editions_on_book_id"
+  end
+
+  create_table "shipments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "copy_id", null: false
+    t.bigint "waitlist_entry_id"
+    t.bigint "from_user_id", null: false
+    t.bigint "to_user_id", null: false
+    t.integer "status", null: false
+    t.string "easypost_id", null: false
+    t.string "label_url", null: false
+    t.string "easypost_tracker_id", null: false
+    t.string "easypost_tracking_url", null: false
+    t.string "stripe_payment_intent_id", null: false
+    t.datetime "received_at"
+    t.boolean "sent_reminder_email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["copy_id"], name: "index_shipments_on_copy_id"
+    t.index ["from_user_id"], name: "index_shipments_on_from_user_id"
+    t.index ["to_user_id"], name: "index_shipments_on_to_user_id"
+    t.index ["waitlist_entry_id"], name: "index_shipments_on_waitlist_entry_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -67,7 +85,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_015147) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "full_name", null: false
     t.string "street", null: false
-    t.string "street2", null: false
+    t.string "street2"
     t.string "city", null: false
     t.string "state", null: false
     t.string "postal_code", null: false
@@ -77,6 +95,22 @@ ActiveRecord::Schema.define(version: 2020_08_15_015147) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "waitlist_entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "notified_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_waitlist_entries_on_book_id"
+    t.index ["user_id"], name: "index_waitlist_entries_on_user_id"
+  end
+
   add_foreign_key "copies", "editions"
   add_foreign_key "copies", "users"
+  add_foreign_key "shipments", "copies"
+  add_foreign_key "shipments", "users", column: "from_user_id"
+  add_foreign_key "shipments", "users", column: "to_user_id"
+  add_foreign_key "shipments", "waitlist_entries"
+  add_foreign_key "waitlist_entries", "books"
+  add_foreign_key "waitlist_entries", "users"
 end

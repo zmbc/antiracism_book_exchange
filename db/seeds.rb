@@ -6,25 +6,39 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Shipment.destroy_all
+Copy.destroy_all
+Edition.destroy_all
+Book.destroy_all
 User.destroy_all
 
-user = User.new(
+admin = User.new(
   email: 'admin@antiracismbookexchange.com',
   admin: true,
   password: '123456',
   password_confirmation: '123456',
   full_name: 'Admin Admin',
   street: '777 Brockton Avenue',
-  street2: '',
   city: 'Abington',
   state: 'MA',
-  postal_code: '2351'
+  postal_code: '02351'
 )
-user.skip_confirmation!
-user.save!
+admin.skip_confirmation!
+admin.save!
 
-Book.destroy_all
-Edition.destroy_all
+rando = User.new(
+  email: 'rando@antiracismbookexchange.com',
+  admin: false,
+  password: '123456',
+  password_confirmation: '123456',
+  full_name: 'Rando Rando',
+  street: '30 Memorial Drive',
+  city: 'Avon',
+  state: 'MA',
+  postal_code: '02322'
+)
+rando.skip_confirmation!
+rando.save!
 
 Book.create!(
   title: 'So You Want To Talk About Race',
@@ -38,7 +52,7 @@ Book.create!(
   ]
 )
 
-Book.create!(
+b2 = Book.create!(
   title: 'How to Be an Antiracist',
   author: 'Ibram X. Kendi',
   year: 2019,
@@ -48,4 +62,22 @@ Book.create!(
   editions: [
     Edition.new(name: 'Hardcover', width_inches: 5.8, length_inches: 8.6, height_inches: 1.1, weight_ounces: 15.2)
   ]
+)
+
+Copy.create!(
+  edition: b2.editions.first,
+  user: rando,
+  status: :available
+)
+
+Copy.create!(
+  edition: b2.editions.first,
+  user: rando,
+  status: :available
+)
+
+Copy.create!(
+  edition: b2.editions.first,
+  user: rando,
+  status: :available
 )

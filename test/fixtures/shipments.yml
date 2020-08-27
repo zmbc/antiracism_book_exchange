@@ -1,0 +1,9 @@
+# one:
+#   copy: one
+#   from_user: one
+#   to_user: one
+#   status: 1
+#   easypost_id: MyString
+#   label_url: MyString
+#   easypost_tracker_id: MyString
+#   easypost_tracking_url: MyString

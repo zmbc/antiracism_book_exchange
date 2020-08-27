@@ -1,5 +1,5 @@
 %h1 List your copy of #{@book.title}
-= form_with do
+= form_with local: true do
   .form-group
     = label_tag :edition_id, 'Which edition do you have?'
     = select_tag :edition_id, options_from_collection_for_select(@book.editions, :id, :name), class: 'form-control'

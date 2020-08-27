@@ -1,17 +1,14 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+available_one:
+  edition: available_one
+  user: available_owner
+  status: <%= Copy.statuses[:available] %>
 
-one:
-  edition: one
-  user: one
-  status: 1
-  tracker_id: MyString
-  easypost_tracking_url: MyString
-  received_at: 2020-08-14 18:51:47
+available_two:
+  edition: available_one
+  user: available_owner
+  status: <%= Copy.statuses[:available] %>
 
-two:
-  edition: two
-  user: two
-  status: 1
-  tracker_id: MyString
-  easypost_tracking_url: MyString
-  received_at: 2020-08-14 18:51:47
+available_three:
+  edition: available_one
+  user: available_owner
+  status: <%= Copy.statuses[:available] %>

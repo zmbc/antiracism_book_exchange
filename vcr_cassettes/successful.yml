@@ -1,0 +1,1242 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/addresses
+    body:
+      encoding: UTF-8
+      string: '{"address":{"name":"Admin Admin","street1":"1410 NE Campus Parkway","city":"Seattle","state":"WA","zip":"98195","country":"US"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.7.1-p83
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cf6978c15f4741adfe54b02e0001aa94
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_8747f91d9b9b4facba22533190a585c0"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.056324'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb12sj
+      X-Version-Label:
+      - easypost-202008262015-8414682647-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 59038857a6
+      - intlb1nuq 0ab7988560
+      - intlb1sj 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"adr_8747f91d9b9b4facba22533190a585c0","object":"Address","created_at":"2020-08-27T05:16:29Z","updated_at":"2020-08-27T05:16:29Z","name":"Admin
+        Admin","company":null,"street1":"1410 NE Campus Parkway","street2":null,"city":"Seattle","state":"WA","zip":"98195","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+  recorded_at: Thu, 27 Aug 2020 05:16:30 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/parcels
+    body:
+      encoding: UTF-8
+      string: '{"parcel":{"width":"5.8","length":"8.6","height":"1.1","weight":"15.2"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.7.1-p83
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - 9421ffd45f4741aefe320a410001707e
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/parcels/prcl_8b76925132fc4139b4401639afeea00f"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.030820'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb8sj
+      X-Version-Label:
+      - easypost-202008262015-8414682647-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1wdc 59038857a6
+      - intlb1sj 0ab7988560
+      - intlb1wdc 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"prcl_8b76925132fc4139b4401639afeea00f","object":"Parcel","created_at":"2020-08-27T05:16:30Z","updated_at":"2020-08-27T05:16:30Z","length":8.6,"width":5.8,"height":1.1,"predefined_package":null,"weight":15.2,"mode":"test"}'
+  recorded_at: Thu, 27 Aug 2020 05:16:30 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/shipments
+    body:
+      encoding: UTF-8
+      string: '{"shipment":{"to_address":{"id":"adr_8747f91d9b9b4facba22533190a585c0"},"from_address":{"id":"adr_8747f91d9b9b4facba22533190a585c0"},"parcel":{"id":"prcl_8b76925132fc4139b4401639afeea00f"},"options":{"special_rates_eligibility":"USPS.MEDIAMAIL"}}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.7.1-p83
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cf6978c15f4741aefe54b0510001aa9c
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/shipments/shp_b083e46b4c3d46598915815fb6446078"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.261069'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb4sj
+      X-Version-Label:
+      - easypost-202008262015-8414682647-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 59038857a6
+      - intlb1nuq 0ab7988560
+      - intlb1sj 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"created_at":"2020-08-27T05:16:30Z","is_return":false,"messages":[],"mode":"test","options":{"special_rates_eligibility":"USPS.MEDIAMAIL","currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"reference":null,"status":"unknown","tracking_code":null,"updated_at":"2020-08-27T05:16:30Z","batch_id":null,"batch_status":null,"batch_message":null,"customs_info":null,"from_address":{"id":"adr_8747f91d9b9b4facba22533190a585c0","object":"Address","created_at":"2020-08-27T05:16:29Z","updated_at":"2020-08-27T05:16:29Z","name":"Admin
+        Admin","company":null,"street1":"1410 NE Campus Parkway","street2":null,"city":"Seattle","state":"WA","zip":"98195","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"insurance":null,"order_id":null,"parcel":{"id":"prcl_8b76925132fc4139b4401639afeea00f","object":"Parcel","created_at":"2020-08-27T05:16:30Z","updated_at":"2020-08-27T05:16:30Z","length":8.6,"width":5.8,"height":1.1,"predefined_package":null,"weight":15.2,"mode":"test"},"postage_label":null,"rates":[{"id":"rate_1ed3c34f6d11434fb47f9a8669e56e2c","object":"Rate","created_at":"2020-08-27T05:16:30Z","updated_at":"2020-08-27T05:16:30Z","mode":"test","service":"Express","carrier":"USPS","rate":"23.00","currency":"USD","retail_rate":"26.75","retail_currency":"USD","list_rate":"23.00","list_currency":"USD","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_b083e46b4c3d46598915815fb6446078","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_00cf4641bf214ebeb2c46421bd0c32e1","object":"Rate","created_at":"2020-08-27T05:16:30Z","updated_at":"2020-08-27T05:16:30Z","mode":"test","service":"ParcelSelect","carrier":"USPS","rate":"6.92","currency":"USD","retail_rate":"6.92","retail_currency":"USD","list_rate":"6.92","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_b083e46b4c3d46598915815fb6446078","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_96c5e9e3a28d4d3e9d93dedbfa73008d","object":"Rate","created_at":"2020-08-27T05:16:30Z","updated_at":"2020-08-27T05:16:30Z","mode":"test","service":"Priority","carrier":"USPS","rate":"7.02","currency":"USD","retail_rate":"7.50","retail_currency":"USD","list_rate":"7.02","list_currency":"USD","delivery_days":1,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":1,"shipment_id":"shp_b083e46b4c3d46598915815fb6446078","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_4862555c16c24c48a419d19c1b6c16ec","object":"Rate","created_at":"2020-08-27T05:16:30Z","updated_at":"2020-08-27T05:16:30Z","mode":"test","service":"First","carrier":"USPS","rate":"5.04","currency":"USD","retail_rate":"5.04","retail_currency":"USD","list_rate":"5.04","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_b083e46b4c3d46598915815fb6446078","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_117aa91f191e45ad9f538df4f5b8ee63","object":"Rate","created_at":"2020-08-27T05:16:30Z","updated_at":"2020-08-27T05:16:30Z","mode":"test","service":"MediaMail","carrier":"USPS","rate":"2.80","currency":"USD","retail_rate":"2.80","retail_currency":"USD","list_rate":"2.80","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_b083e46b4c3d46598915815fb6446078","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"}],"refund_status":null,"scan_form":null,"selected_rate":null,"tracker":null,"to_address":{"id":"adr_8747f91d9b9b4facba22533190a585c0","object":"Address","created_at":"2020-08-27T05:16:29Z","updated_at":"2020-08-27T05:16:29Z","name":"Admin
+        Admin","company":null,"street1":"1410 NE Campus Parkway","street2":null,"city":"Seattle","state":"WA","zip":"98195","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"usps_zone":1,"return_address":{"id":"adr_8747f91d9b9b4facba22533190a585c0","object":"Address","created_at":"2020-08-27T05:16:29Z","updated_at":"2020-08-27T05:16:29Z","name":"Admin
+        Admin","company":null,"street1":"1410 NE Campus Parkway","street2":null,"city":"Seattle","state":"WA","zip":"98195","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"buyer_address":{"id":"adr_8747f91d9b9b4facba22533190a585c0","object":"Address","created_at":"2020-08-27T05:16:29Z","updated_at":"2020-08-27T05:16:29Z","name":"Admin
+        Admin","company":null,"street1":"1410 NE Campus Parkway","street2":null,"city":"Seattle","state":"WA","zip":"98195","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"forms":[],"fees":[],"id":"shp_b083e46b4c3d46598915815fb6446078","object":"Shipment"}'
+  recorded_at: Thu, 27 Aug 2020 05:16:30 GMT
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/payment_intents
+    body:
+      encoding: UTF-8
+      string: amount=320&currency=usd&payment_method=pm_card_visa&confirm=true&error_on_requires_action=true&capture_method=manual
+    headers:
+      User-Agent:
+      - Stripe/v1 RubyBindings/5.24.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"5.24.0","lang":"ruby","lang_version":"2.7.1 p83 (2020-03-31)","platform":"x86_64-linux","engine":"ruby","publisher":"stripe","uname":"Linux
+        version 4.15.0-112-generic (buildd@lcy01-amd64-021) (gcc version 5.4.0 20160609
+        (Ubuntu 5.4.0-6ubuntu1~16.04.12)) #113~16.04.1-Ubuntu SMP Fri Jul 10 04:37:08
+        UTC 2020","hostname":"zeb-inspiron-5520"}'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 27 Aug 2020 05:16:32 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '4171'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Request-Id:
+      - req_y8J9PNxehY7wwe
+      Stripe-Version:
+      - '2020-03-02'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "pi_1HKdTPDdxaJLlE0xcP9mHKWH",
+          "object": "payment_intent",
+          "amount": 320,
+          "amount_capturable": 320,
+          "amount_received": 0,
+          "application": null,
+          "application_fee_amount": null,
+          "canceled_at": null,
+          "cancellation_reason": null,
+          "capture_method": "manual",
+          "charges": {
+            "object": "list",
+            "data": [
+              {
+                "id": "ch_1HKdTPDdxaJLlE0xt46EiZr8",
+                "object": "charge",
+                "amount": 320,
+                "amount_refunded": 0,
+                "application": null,
+                "application_fee": null,
+                "application_fee_amount": null,
+                "balance_transaction": null,
+                "billing_details": {
+                  "address": {
+                    "city": null,
+                    "country": null,
+                    "line1": null,
+                    "line2": null,
+                    "postal_code": null,
+                    "state": null
+                  },
+                  "email": null,
+                  "name": null,
+                  "phone": null
+                },
+                "calculated_statement_descriptor": "Stripe",
+                "captured": false,
+                "created": 1598505391,
+                "currency": "usd",
+                "customer": null,
+                "description": null,
+                "destination": null,
+                "dispute": null,
+                "disputed": false,
+                "failure_code": null,
+                "failure_message": null,
+                "fraud_details": {
+                },
+                "invoice": null,
+                "livemode": false,
+                "metadata": {
+                },
+                "on_behalf_of": null,
+                "order": null,
+                "outcome": {
+                  "network_status": "approved_by_network",
+                  "reason": null,
+                  "risk_level": "normal",
+                  "risk_score": 62,
+                  "seller_message": "Payment complete.",
+                  "type": "authorized"
+                },
+                "paid": true,
+                "payment_intent": "pi_1HKdTPDdxaJLlE0xcP9mHKWH",
+                "payment_method": "pm_1HKdTPDdxaJLlE0xQkk0PrDD",
+                "payment_method_details": {
+                  "card": {
+                    "brand": "visa",
+                    "checks": {
+                      "address_line1_check": null,
+                      "address_postal_code_check": null,
+                      "cvc_check": null
+                    },
+                    "country": "US",
+                    "exp_month": 8,
+                    "exp_year": 2021,
+                    "fingerprint": "Hwj1EohYu6MmCRA3",
+                    "funding": "credit",
+                    "installments": null,
+                    "last4": "4242",
+                    "network": "visa",
+                    "three_d_secure": null,
+                    "wallet": null
+                  },
+                  "type": "card"
+                },
+                "receipt_email": null,
+                "receipt_number": null,
+                "receipt_url": "https://pay.stripe.com/receipts/acct_1HKYq9DdxaJLlE0x/ch_1HKdTPDdxaJLlE0xt46EiZr8/rcpt_HuSOCgZ9usnZcM9weddyndB0fv4FC0I",
+                "refunded": false,
+                "refunds": {
+                  "object": "list",
+                  "data": [
+
+                  ],
+                  "has_more": false,
+                  "total_count": 0,
+                  "url": "/v1/charges/ch_1HKdTPDdxaJLlE0xt46EiZr8/refunds"
+                },
+                "review": null,
+                "shipping": null,
+                "source": null,
+                "source_transfer": null,
+                "statement_descriptor": null,
+                "statement_descriptor_suffix": null,
+                "status": "succeeded",
+                "transfer_data": null,
+                "transfer_group": null
+              }
+            ],
+            "has_more": false,
+            "total_count": 1,
+            "url": "/v1/charges?payment_intent=pi_1HKdTPDdxaJLlE0xcP9mHKWH"
+          },
+          "client_secret": "pi_1HKdTPDdxaJLlE0xcP9mHKWH_secret_IXJYtasx2o7aiI2RtuvfCtG8C",
+          "confirmation_method": "automatic",
+          "created": 1598505391,
+          "currency": "usd",
+          "customer": null,
+          "description": null,
+          "invoice": null,
+          "last_payment_error": null,
+          "livemode": false,
+          "metadata": {
+          },
+          "next_action": null,
+          "on_behalf_of": null,
+          "payment_method": "pm_1HKdTPDdxaJLlE0xQkk0PrDD",
+          "payment_method_options": {
+            "card": {
+              "installments": null,
+              "network": null,
+              "request_three_d_secure": "automatic"
+            }
+          },
+          "payment_method_types": [
+            "card"
+          ],
+          "receipt_email": null,
+          "review": null,
+          "setup_future_usage": null,
+          "shipping": null,
+          "source": null,
+          "statement_descriptor": null,
+          "statement_descriptor_suffix": null,
+          "status": "requires_capture",
+          "transfer_data": null,
+          "transfer_group": null
+        }
+  recorded_at: Thu, 27 Aug 2020 05:16:32 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/addresses
+    body:
+      encoding: UTF-8
+      string: '{"address":{"name":"One One","street1":"3030 Radio Rd","city":"Gainsville","state":"FL","zip":"32603","country":"US"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.7.1-p83
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - 6cd149875f4741b0fe4213290000b9ca
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_51e5abde5fc64bb994a8ae1f8381d6a1"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.054237'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb8sj
+      X-Version-Label:
+      - easypost-202008262015-8414682647-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1sj 59038857a6
+      - intlb2sj 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"adr_51e5abde5fc64bb994a8ae1f8381d6a1","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","name":"One
+        One","company":null,"street1":"3030 Radio Rd","street2":null,"city":"Gainsville","state":"FL","zip":"32603","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+  recorded_at: Thu, 27 Aug 2020 05:16:32 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/addresses
+    body:
+      encoding: UTF-8
+      string: '{"address":{"name":"Available Owner","street1":"Academic Village","street2":"3700
+        Libra Dr, \\#161111","city":"Orlando","state":"FL","zip":"32816","country":"US"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.7.1-p83
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cc4810065f4741b0fe6489bf0000bf5a
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_0fc51fd88c8449b185ec796d16925462"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.058321'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb6sj
+      X-Version-Label:
+      - easypost-202008262015-8414682647-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2sj 59038857a6
+      - intlb2sj 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"adr_0fc51fd88c8449b185ec796d16925462","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","name":"Available
+        Owner","company":null,"street1":"Academic Village","street2":"3700 Libra Dr,
+        \\#161111","city":"Orlando","state":"FL","zip":"32816","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+  recorded_at: Thu, 27 Aug 2020 05:16:32 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/parcels
+    body:
+      encoding: UTF-8
+      string: '{"parcel":{"width":"5.8","length":"8.6","height":"1.1","weight":"15.2"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.7.1-p83
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - 1a2735ca5f4741b0fe428faf0001d704
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/parcels/prcl_a70058e795af4cefa5bafe122971d0d4"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.032426'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb8sj
+      X-Version-Label:
+      - easypost-202008262015-8414682647-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2wdc 59038857a6
+      - intlb1sj 0ab7988560
+      - intlb1wdc 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"prcl_a70058e795af4cefa5bafe122971d0d4","object":"Parcel","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","length":8.6,"width":5.8,"height":1.1,"predefined_package":null,"weight":15.2,"mode":"test"}'
+  recorded_at: Thu, 27 Aug 2020 05:16:32 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/shipments
+    body:
+      encoding: UTF-8
+      string: '{"shipment":{"to_address":{"id":"adr_51e5abde5fc64bb994a8ae1f8381d6a1"},"from_address":{"id":"adr_0fc51fd88c8449b185ec796d16925462"},"parcel":{"id":"prcl_a70058e795af4cefa5bafe122971d0d4"},"options":{"special_rates_eligibility":"USPS.MEDIAMAIL"}}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.7.1-p83
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - 33e474825f4741b0fe5776b600014c66
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/shipments/shp_08bade3dfe4d40b7b9474b6fbb6bc42e"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.278027'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb4sj
+      X-Version-Label:
+      - easypost-202008262015-8414682647-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq 59038857a6
+      - intlb2nuq 0ab7988560
+      - intlb2sj 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"created_at":"2020-08-27T05:16:33Z","is_return":false,"messages":[],"mode":"test","options":{"special_rates_eligibility":"USPS.MEDIAMAIL","currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"reference":null,"status":"unknown","tracking_code":null,"updated_at":"2020-08-27T05:16:33Z","batch_id":null,"batch_status":null,"batch_message":null,"customs_info":null,"from_address":{"id":"adr_0fc51fd88c8449b185ec796d16925462","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","name":"Available
+        Owner","company":null,"street1":"Academic Village","street2":"3700 Libra Dr,
+        \\#161111","city":"Orlando","state":"FL","zip":"32816","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"insurance":null,"order_id":null,"parcel":{"id":"prcl_a70058e795af4cefa5bafe122971d0d4","object":"Parcel","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","length":8.6,"width":5.8,"height":1.1,"predefined_package":null,"weight":15.2,"mode":"test"},"postage_label":null,"rates":[{"id":"rate_7f557a4b20b240adbfd58b7390f3195b","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"Express","carrier":"USPS","rate":"23.00","currency":"USD","retail_rate":"26.75","retail_currency":"USD","list_rate":"23.00","list_currency":"USD","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_307525d5e5a34c54ad0d0d20000cf5bf","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"ParcelSelect","carrier":"USPS","rate":"6.92","currency":"USD","retail_rate":"6.92","retail_currency":"USD","list_rate":"6.92","list_currency":"USD","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_53371d1fac8948a39228561c700c2788","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"Priority","carrier":"USPS","rate":"7.02","currency":"USD","retail_rate":"7.50","retail_currency":"USD","list_rate":"7.02","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_247f1269f487428680ea2a2a0f28af68","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"First","carrier":"USPS","rate":"5.04","currency":"USD","retail_rate":"5.04","retail_currency":"USD","list_rate":"5.04","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_92e603af4ae84345b19e798a3401d803","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"MediaMail","carrier":"USPS","rate":"2.80","currency":"USD","retail_rate":"2.80","retail_currency":"USD","list_rate":"2.80","list_currency":"USD","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"}],"refund_status":null,"scan_form":null,"selected_rate":null,"tracker":null,"to_address":{"id":"adr_51e5abde5fc64bb994a8ae1f8381d6a1","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","name":"One
+        One","company":null,"street1":"3030 Radio Rd","street2":null,"city":"Gainsville","state":"FL","zip":"32603","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"usps_zone":2,"return_address":{"id":"adr_0fc51fd88c8449b185ec796d16925462","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","name":"Available
+        Owner","company":null,"street1":"Academic Village","street2":"3700 Libra Dr,
+        \\#161111","city":"Orlando","state":"FL","zip":"32816","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"buyer_address":{"id":"adr_51e5abde5fc64bb994a8ae1f8381d6a1","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","name":"One
+        One","company":null,"street1":"3030 Radio Rd","street2":null,"city":"Gainsville","state":"FL","zip":"32603","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"forms":[],"fees":[],"id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","object":"Shipment"}'
+  recorded_at: Thu, 27 Aug 2020 05:16:33 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/shipments/shp_08bade3dfe4d40b7b9474b6fbb6bc42e/buy
+    body:
+      encoding: UTF-8
+      string: '{"rate":{"id":"rate_92e603af4ae84345b19e798a3401d803"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.7.1-p83
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - 9421ffd05f4741b1fe320acb000170b6
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.825275'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb10sj
+      X-Version-Label:
+      - easypost-202008262015-8414682647-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1wdc 59038857a6
+      - intlb2sj 0ab7988560
+      - intlb2wdc 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"created_at":"2020-08-27T05:16:33Z","is_return":false,"messages":[],"mode":"test","options":{"special_rates_eligibility":"USPS.MEDIAMAIL","currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"reference":null,"status":"unknown","tracking_code":"9449000897846047170407","updated_at":"2020-08-27T05:16:34Z","batch_id":null,"batch_status":null,"batch_message":null,"customs_info":null,"from_address":{"id":"adr_0fc51fd88c8449b185ec796d16925462","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","name":"Available
+        Owner","company":null,"street1":"Academic Village","street2":"3700 Libra Dr,
+        \\#161111","city":"Orlando","state":"FL","zip":"32816","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"insurance":null,"order_id":null,"parcel":{"id":"prcl_a70058e795af4cefa5bafe122971d0d4","object":"Parcel","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","length":8.6,"width":5.8,"height":1.1,"predefined_package":null,"weight":15.2,"mode":"test"},"postage_label":{"object":"PostageLabel","id":"pl_ade542e6116447d286f52180ffdd1ebe","created_at":"2020-08-27T05:16:34Z","updated_at":"2020-08-27T05:16:34Z","date_advance":0,"integrated_form":"none","label_date":"2020-08-27T05:16:34Z","label_resolution":300,"label_size":"4x6","label_type":"default","label_file_type":"image/png","label_url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/postage_label/20200827/d7dd3d620d8045399ebffb8f05016a24.png","label_pdf_url":null,"label_zpl_url":null,"label_epl2_url":null,"label_file":null},"rates":[{"id":"rate_7f557a4b20b240adbfd58b7390f3195b","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"Express","carrier":"USPS","rate":"23.00","currency":"USD","retail_rate":"26.75","retail_currency":"USD","list_rate":"23.00","list_currency":"USD","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_307525d5e5a34c54ad0d0d20000cf5bf","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"ParcelSelect","carrier":"USPS","rate":"6.92","currency":"USD","retail_rate":"6.92","retail_currency":"USD","list_rate":"6.92","list_currency":"USD","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_53371d1fac8948a39228561c700c2788","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"Priority","carrier":"USPS","rate":"7.02","currency":"USD","retail_rate":"7.50","retail_currency":"USD","list_rate":"7.02","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_247f1269f487428680ea2a2a0f28af68","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"First","carrier":"USPS","rate":"5.04","currency":"USD","retail_rate":"5.04","retail_currency":"USD","list_rate":"5.04","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_92e603af4ae84345b19e798a3401d803","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"MediaMail","carrier":"USPS","rate":"2.80","currency":"USD","retail_rate":"2.80","retail_currency":"USD","list_rate":"2.80","list_currency":"USD","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"}],"refund_status":null,"scan_form":null,"selected_rate":{"id":"rate_92e603af4ae84345b19e798a3401d803","object":"Rate","created_at":"2020-08-27T05:16:34Z","updated_at":"2020-08-27T05:16:34Z","mode":"test","service":"MediaMail","carrier":"USPS","rate":"2.80","currency":"USD","retail_rate":"2.80","retail_currency":"USD","list_rate":"2.80","list_currency":"USD","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},"tracker":{"id":"trk_66baac6e856b4b2187a2d1c3da3faa80","object":"Tracker","mode":"test","tracking_code":"9449000897846047170407","status":"unknown","status_detail":"unknown","created_at":"2020-08-27T05:16:34Z","updated_at":"2020-08-27T05:16:34Z","signed_by":null,"weight":null,"est_delivery_date":null,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier":"USPS","tracking_details":[],"fees":[],"carrier_detail":null,"public_url":"https://track.easypost.com/djE6dHJrXzY2YmFhYzZlODU2YjRiMjE4N2EyZDFjM2RhM2ZhYTgw"},"to_address":{"id":"adr_51e5abde5fc64bb994a8ae1f8381d6a1","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","name":"One
+        One","company":null,"street1":"3030 Radio Rd","street2":null,"city":"Gainsville","state":"FL","zip":"32611-1916","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null}}},"usps_zone":2,"return_address":{"id":"adr_0fc51fd88c8449b185ec796d16925462","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","name":"Available
+        Owner","company":null,"street1":"Academic Village","street2":"3700 Libra Dr,
+        \\#161111","city":"Orlando","state":"FL","zip":"32816","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"buyer_address":{"id":"adr_51e5abde5fc64bb994a8ae1f8381d6a1","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","name":"One
+        One","company":null,"street1":"3030 Radio Rd","street2":null,"city":"Gainsville","state":"FL","zip":"32611-1916","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null}}},"forms":[],"fees":[{"object":"Fee","type":"LabelFee","amount":"0.00000","charged":true,"refunded":false},{"object":"Fee","type":"PostageFee","amount":"2.80000","charged":true,"refunded":false}],"id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","object":"Shipment"}'
+  recorded_at: Thu, 27 Aug 2020 05:16:34 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/shipments/shp_08bade3dfe4d40b7b9474b6fbb6bc42e/label
+    body:
+      encoding: UTF-8
+      string: '{"file_format":"PDF"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.7.1-p83
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cf6978be5f4741b2fe54b3e90001aae9
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.854997'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb3sj
+      X-Version-Label:
+      - easypost-202008262015-8414682647-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 59038857a6
+      - intlb1nuq 0ab7988560
+      - intlb1sj 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"created_at":"2020-08-27T05:16:33Z","is_return":false,"messages":[],"mode":"test","options":{"special_rates_eligibility":"USPS.MEDIAMAIL","currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"reference":null,"status":"unknown","tracking_code":"9449000897846047170407","updated_at":"2020-08-27T05:16:34Z","batch_id":null,"batch_status":null,"batch_message":null,"customs_info":null,"from_address":{"id":"adr_0fc51fd88c8449b185ec796d16925462","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","name":"Available
+        Owner","company":null,"street1":"Academic Village","street2":"3700 Libra Dr,
+        \\#161111","city":"Orlando","state":"FL","zip":"32816","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"insurance":null,"order_id":null,"parcel":{"id":"prcl_a70058e795af4cefa5bafe122971d0d4","object":"Parcel","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","length":8.6,"width":5.8,"height":1.1,"predefined_package":null,"weight":15.2,"mode":"test"},"postage_label":{"object":"PostageLabel","id":"pl_ade542e6116447d286f52180ffdd1ebe","created_at":"2020-08-27T05:16:34Z","updated_at":"2020-08-27T05:16:35Z","date_advance":0,"integrated_form":"none","label_date":"2020-08-27T05:16:34Z","label_resolution":300,"label_size":"4x6","label_type":"default","label_file_type":"image/png","label_url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/postage_label/20200827/d7dd3d620d8045399ebffb8f05016a24.png","label_pdf_url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/postage_label/20200827/3d2099e1b84a4c8ab0dedb366cbd446c.pdf","label_zpl_url":null,"label_epl2_url":null,"label_file":null},"rates":[{"id":"rate_7f557a4b20b240adbfd58b7390f3195b","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"Express","carrier":"USPS","rate":"23.00","currency":"USD","retail_rate":"26.75","retail_currency":"USD","list_rate":"23.00","list_currency":"USD","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_307525d5e5a34c54ad0d0d20000cf5bf","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"ParcelSelect","carrier":"USPS","rate":"6.92","currency":"USD","retail_rate":"6.92","retail_currency":"USD","list_rate":"6.92","list_currency":"USD","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_53371d1fac8948a39228561c700c2788","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"Priority","carrier":"USPS","rate":"7.02","currency":"USD","retail_rate":"7.50","retail_currency":"USD","list_rate":"7.02","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_247f1269f487428680ea2a2a0f28af68","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"First","carrier":"USPS","rate":"5.04","currency":"USD","retail_rate":"5.04","retail_currency":"USD","list_rate":"5.04","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_92e603af4ae84345b19e798a3401d803","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"MediaMail","carrier":"USPS","rate":"2.80","currency":"USD","retail_rate":"2.80","retail_currency":"USD","list_rate":"2.80","list_currency":"USD","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"}],"refund_status":null,"scan_form":null,"selected_rate":{"id":"rate_92e603af4ae84345b19e798a3401d803","object":"Rate","created_at":"2020-08-27T05:16:34Z","updated_at":"2020-08-27T05:16:34Z","mode":"test","service":"MediaMail","carrier":"USPS","rate":"2.80","currency":"USD","retail_rate":"2.80","retail_currency":"USD","list_rate":"2.80","list_currency":"USD","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},"tracker":{"id":"trk_66baac6e856b4b2187a2d1c3da3faa80","object":"Tracker","mode":"test","tracking_code":"9449000897846047170407","status":"pre_transit","status_detail":"status_update","created_at":"2020-08-27T05:16:34Z","updated_at":"2020-08-27T05:16:34Z","signed_by":null,"weight":null,"est_delivery_date":"2020-08-27T05:16:34Z","shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment
+        Info Sent to USPS","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2020-07-27T05:16:34Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}},{"object":"TrackingDetail","message":"Shipping
+        Label Created","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2020-07-27T17:53:34Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"}}],"fees":[],"carrier_detail":{"object":"CarrierDetail","service":"First-Class
+        Package Service","container_type":null,"est_delivery_date_local":null,"est_delivery_time_local":null,"origin_location":"HOUSTON
+        TX, 77001","origin_tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"},"destination_location":"CHARLESTON
+        SC, 29401","destination_tracking_location":null,"guaranteed_delivery_date":null,"alternate_identifier":null,"initial_delivery_attempt":null},"public_url":"https://track.easypost.com/djE6dHJrXzY2YmFhYzZlODU2YjRiMjE4N2EyZDFjM2RhM2ZhYTgw"},"to_address":{"id":"adr_51e5abde5fc64bb994a8ae1f8381d6a1","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:34Z","name":"One
+        One","company":null,"street1":"3030 Radio Rd","street2":null,"city":"Gainsville","state":"FL","zip":"32611-1916","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null}}},"usps_zone":2,"return_address":{"id":"adr_0fc51fd88c8449b185ec796d16925462","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","name":"Available
+        Owner","company":null,"street1":"Academic Village","street2":"3700 Libra Dr,
+        \\#161111","city":"Orlando","state":"FL","zip":"32816","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"buyer_address":{"id":"adr_51e5abde5fc64bb994a8ae1f8381d6a1","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:34Z","name":"One
+        One","company":null,"street1":"3030 Radio Rd","street2":null,"city":"Gainsville","state":"FL","zip":"32611-1916","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null}}},"forms":[],"fees":[{"object":"Fee","type":"LabelFee","amount":"0.00000","charged":true,"refunded":false},{"object":"Fee","type":"PostageFee","amount":"2.80000","charged":true,"refunded":false}],"id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","object":"Shipment"}'
+  recorded_at: Thu, 27 Aug 2020 05:16:35 GMT
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/payment_intents/pi_1HKdTPDdxaJLlE0xcP9mHKWH/capture
+    body:
+      encoding: UTF-8
+      string: amount_to_capture=320
+    headers:
+      User-Agent:
+      - Stripe/v1 RubyBindings/5.24.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-Telemetry:
+      - '{"last_request_metrics":{"request_id":"req_y8J9PNxehY7wwe","request_duration_ms":1097}}'
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"5.24.0","lang":"ruby","lang_version":"2.7.1 p83 (2020-03-31)","platform":"x86_64-linux","engine":"ruby","publisher":"stripe","uname":"Linux
+        version 4.15.0-112-generic (buildd@lcy01-amd64-021) (gcc version 5.4.0 20160609
+        (Ubuntu 5.4.0-6ubuntu1~16.04.12)) #113~16.04.1-Ubuntu SMP Fri Jul 10 04:37:08
+        UTC 2020","hostname":"zeb-inspiron-5520"}'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 27 Aug 2020 05:16:36 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '4189'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Request-Id:
+      - req_s8mLnkvVxTAAKy
+      Stripe-Version:
+      - '2020-03-02'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "pi_1HKdTPDdxaJLlE0xcP9mHKWH",
+          "object": "payment_intent",
+          "amount": 320,
+          "amount_capturable": 0,
+          "amount_received": 320,
+          "application": null,
+          "application_fee_amount": null,
+          "canceled_at": null,
+          "cancellation_reason": null,
+          "capture_method": "manual",
+          "charges": {
+            "object": "list",
+            "data": [
+              {
+                "id": "ch_1HKdTPDdxaJLlE0xt46EiZr8",
+                "object": "charge",
+                "amount": 320,
+                "amount_refunded": 0,
+                "application": null,
+                "application_fee": null,
+                "application_fee_amount": null,
+                "balance_transaction": "txn_1HKdTUDdxaJLlE0x8lx4lSya",
+                "billing_details": {
+                  "address": {
+                    "city": null,
+                    "country": null,
+                    "line1": null,
+                    "line2": null,
+                    "postal_code": null,
+                    "state": null
+                  },
+                  "email": null,
+                  "name": null,
+                  "phone": null
+                },
+                "calculated_statement_descriptor": "Stripe",
+                "captured": true,
+                "created": 1598505391,
+                "currency": "usd",
+                "customer": null,
+                "description": null,
+                "destination": null,
+                "dispute": null,
+                "disputed": false,
+                "failure_code": null,
+                "failure_message": null,
+                "fraud_details": {
+                },
+                "invoice": null,
+                "livemode": false,
+                "metadata": {
+                },
+                "on_behalf_of": null,
+                "order": null,
+                "outcome": {
+                  "network_status": "approved_by_network",
+                  "reason": null,
+                  "risk_level": "normal",
+                  "risk_score": 62,
+                  "seller_message": "Payment complete.",
+                  "type": "authorized"
+                },
+                "paid": true,
+                "payment_intent": "pi_1HKdTPDdxaJLlE0xcP9mHKWH",
+                "payment_method": "pm_1HKdTPDdxaJLlE0xQkk0PrDD",
+                "payment_method_details": {
+                  "card": {
+                    "brand": "visa",
+                    "checks": {
+                      "address_line1_check": null,
+                      "address_postal_code_check": null,
+                      "cvc_check": null
+                    },
+                    "country": "US",
+                    "exp_month": 8,
+                    "exp_year": 2021,
+                    "fingerprint": "Hwj1EohYu6MmCRA3",
+                    "funding": "credit",
+                    "installments": null,
+                    "last4": "4242",
+                    "network": "visa",
+                    "three_d_secure": null,
+                    "wallet": null
+                  },
+                  "type": "card"
+                },
+                "receipt_email": null,
+                "receipt_number": null,
+                "receipt_url": "https://pay.stripe.com/receipts/acct_1HKYq9DdxaJLlE0x/ch_1HKdTPDdxaJLlE0xt46EiZr8/rcpt_HuSOCgZ9usnZcM9weddyndB0fv4FC0I",
+                "refunded": false,
+                "refunds": {
+                  "object": "list",
+                  "data": [
+
+                  ],
+                  "has_more": false,
+                  "total_count": 0,
+                  "url": "/v1/charges/ch_1HKdTPDdxaJLlE0xt46EiZr8/refunds"
+                },
+                "review": null,
+                "shipping": null,
+                "source": null,
+                "source_transfer": null,
+                "statement_descriptor": null,
+                "statement_descriptor_suffix": null,
+                "status": "succeeded",
+                "transfer_data": null,
+                "transfer_group": null
+              }
+            ],
+            "has_more": false,
+            "total_count": 1,
+            "url": "/v1/charges?payment_intent=pi_1HKdTPDdxaJLlE0xcP9mHKWH"
+          },
+          "client_secret": "pi_1HKdTPDdxaJLlE0xcP9mHKWH_secret_IXJYtasx2o7aiI2RtuvfCtG8C",
+          "confirmation_method": "automatic",
+          "created": 1598505391,
+          "currency": "usd",
+          "customer": null,
+          "description": null,
+          "invoice": null,
+          "last_payment_error": null,
+          "livemode": false,
+          "metadata": {
+          },
+          "next_action": null,
+          "on_behalf_of": null,
+          "payment_method": "pm_1HKdTPDdxaJLlE0xQkk0PrDD",
+          "payment_method_options": {
+            "card": {
+              "installments": null,
+              "network": null,
+              "request_three_d_secure": "automatic"
+            }
+          },
+          "payment_method_types": [
+            "card"
+          ],
+          "receipt_email": null,
+          "review": null,
+          "setup_future_usage": null,
+          "shipping": null,
+          "source": null,
+          "statement_descriptor": null,
+          "statement_descriptor_suffix": null,
+          "status": "succeeded",
+          "transfer_data": null,
+          "transfer_group": null
+        }
+  recorded_at: Thu, 27 Aug 2020 05:16:36 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/shipments/shp_08bade3dfe4d40b7b9474b6fbb6bc42e
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.7.1-p83
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - 6cd149835f4741b4fe4213e90000ba36
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.114174'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb12sj
+      X-Version-Label:
+      - easypost-202008262015-8414682647-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1sj 59038857a6
+      - intlb1sj 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"created_at":"2020-08-27T05:16:33Z","is_return":false,"messages":[],"mode":"test","options":{"special_rates_eligibility":"USPS.MEDIAMAIL","currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"reference":null,"status":"unknown","tracking_code":"9449000897846047170407","updated_at":"2020-08-27T05:16:34Z","batch_id":null,"batch_status":null,"batch_message":null,"customs_info":null,"from_address":{"id":"adr_0fc51fd88c8449b185ec796d16925462","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","name":"Available
+        Owner","company":null,"street1":"Academic Village","street2":"3700 Libra Dr,
+        \\#161111","city":"Orlando","state":"FL","zip":"32816","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"insurance":null,"order_id":null,"parcel":{"id":"prcl_a70058e795af4cefa5bafe122971d0d4","object":"Parcel","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","length":8.6,"width":5.8,"height":1.1,"predefined_package":null,"weight":15.2,"mode":"test"},"postage_label":{"object":"PostageLabel","id":"pl_ade542e6116447d286f52180ffdd1ebe","created_at":"2020-08-27T05:16:34Z","updated_at":"2020-08-27T05:16:35Z","date_advance":0,"integrated_form":"none","label_date":"2020-08-27T05:16:34Z","label_resolution":300,"label_size":"4x6","label_type":"default","label_file_type":"image/png","label_url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/postage_label/20200827/d7dd3d620d8045399ebffb8f05016a24.png","label_pdf_url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/postage_label/20200827/3d2099e1b84a4c8ab0dedb366cbd446c.pdf","label_zpl_url":null,"label_epl2_url":null,"label_file":null},"rates":[{"id":"rate_7f557a4b20b240adbfd58b7390f3195b","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"Express","carrier":"USPS","rate":"23.00","currency":"USD","retail_rate":"26.75","retail_currency":"USD","list_rate":"23.00","list_currency":"USD","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_307525d5e5a34c54ad0d0d20000cf5bf","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"ParcelSelect","carrier":"USPS","rate":"6.92","currency":"USD","retail_rate":"6.92","retail_currency":"USD","list_rate":"6.92","list_currency":"USD","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_53371d1fac8948a39228561c700c2788","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"Priority","carrier":"USPS","rate":"7.02","currency":"USD","retail_rate":"7.50","retail_currency":"USD","list_rate":"7.02","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_247f1269f487428680ea2a2a0f28af68","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"First","carrier":"USPS","rate":"5.04","currency":"USD","retail_rate":"5.04","retail_currency":"USD","list_rate":"5.04","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_92e603af4ae84345b19e798a3401d803","object":"Rate","created_at":"2020-08-27T05:16:33Z","updated_at":"2020-08-27T05:16:33Z","mode":"test","service":"MediaMail","carrier":"USPS","rate":"2.80","currency":"USD","retail_rate":"2.80","retail_currency":"USD","list_rate":"2.80","list_currency":"USD","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"}],"refund_status":null,"scan_form":null,"selected_rate":{"id":"rate_92e603af4ae84345b19e798a3401d803","object":"Rate","created_at":"2020-08-27T05:16:34Z","updated_at":"2020-08-27T05:16:34Z","mode":"test","service":"MediaMail","carrier":"USPS","rate":"2.80","currency":"USD","retail_rate":"2.80","retail_currency":"USD","list_rate":"2.80","list_currency":"USD","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},"tracker":{"id":"trk_66baac6e856b4b2187a2d1c3da3faa80","object":"Tracker","mode":"test","tracking_code":"9449000897846047170407","status":"pre_transit","status_detail":"status_update","created_at":"2020-08-27T05:16:34Z","updated_at":"2020-08-27T05:16:34Z","signed_by":null,"weight":null,"est_delivery_date":"2020-08-27T05:16:34Z","shipment_id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment
+        Info Sent to USPS","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2020-07-27T05:16:34Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}},{"object":"TrackingDetail","message":"Shipping
+        Label Created","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2020-07-27T17:53:34Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"}}],"fees":[],"carrier_detail":{"object":"CarrierDetail","service":"First-Class
+        Package Service","container_type":null,"est_delivery_date_local":null,"est_delivery_time_local":null,"origin_location":"HOUSTON
+        TX, 77001","origin_tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"},"destination_location":"CHARLESTON
+        SC, 29401","destination_tracking_location":null,"guaranteed_delivery_date":null,"alternate_identifier":null,"initial_delivery_attempt":null},"public_url":"https://track.easypost.com/djE6dHJrXzY2YmFhYzZlODU2YjRiMjE4N2EyZDFjM2RhM2ZhYTgw"},"to_address":{"id":"adr_51e5abde5fc64bb994a8ae1f8381d6a1","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:34Z","name":"One
+        One","company":null,"street1":"3030 Radio Rd","street2":null,"city":"Gainsville","state":"FL","zip":"32611-1916","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null}}},"usps_zone":2,"return_address":{"id":"adr_0fc51fd88c8449b185ec796d16925462","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:32Z","name":"Available
+        Owner","company":null,"street1":"Academic Village","street2":"3700 Libra Dr,
+        \\#161111","city":"Orlando","state":"FL","zip":"32816","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"buyer_address":{"id":"adr_51e5abde5fc64bb994a8ae1f8381d6a1","object":"Address","created_at":"2020-08-27T05:16:32Z","updated_at":"2020-08-27T05:16:34Z","name":"One
+        One","company":null,"street1":"3030 Radio Rd","street2":null,"city":"Gainsville","state":"FL","zip":"32611-1916","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null}}},"forms":[],"fees":[{"object":"Fee","type":"LabelFee","amount":"0.00000","charged":true,"refunded":false},{"object":"Fee","type":"PostageFee","amount":"2.80000","charged":true,"refunded":false}],"id":"shp_08bade3dfe4d40b7b9474b6fbb6bc42e","object":"Shipment"}'
+  recorded_at: Thu, 27 Aug 2020 05:16:36 GMT
+- request:
+    method: get
+    uri: https://api.stripe.com/v1/payment_intents/pi_1HKdTPDdxaJLlE0xcP9mHKWH
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Stripe/v1 RubyBindings/5.24.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-Telemetry:
+      - '{"last_request_metrics":{"request_id":"req_s8mLnkvVxTAAKy","request_duration_ms":623}}'
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"5.24.0","lang":"ruby","lang_version":"2.7.1 p83 (2020-03-31)","platform":"x86_64-linux","engine":"ruby","publisher":"stripe","uname":"Linux
+        version 4.15.0-112-generic (buildd@lcy01-amd64-021) (gcc version 5.4.0 20160609
+        (Ubuntu 5.4.0-6ubuntu1~16.04.12)) #113~16.04.1-Ubuntu SMP Fri Jul 10 04:37:08
+        UTC 2020","hostname":"zeb-inspiron-5520"}'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 27 Aug 2020 05:16:37 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '4189'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Request-Id:
+      - req_CVyo2JnsG0Z3iK
+      Stripe-Version:
+      - '2020-03-02'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "pi_1HKdTPDdxaJLlE0xcP9mHKWH",
+          "object": "payment_intent",
+          "amount": 320,
+          "amount_capturable": 0,
+          "amount_received": 320,
+          "application": null,
+          "application_fee_amount": null,
+          "canceled_at": null,
+          "cancellation_reason": null,
+          "capture_method": "manual",
+          "charges": {
+            "object": "list",
+            "data": [
+              {
+                "id": "ch_1HKdTPDdxaJLlE0xt46EiZr8",
+                "object": "charge",
+                "amount": 320,
+                "amount_refunded": 0,
+                "application": null,
+                "application_fee": null,
+                "application_fee_amount": null,
+                "balance_transaction": "txn_1HKdTUDdxaJLlE0x8lx4lSya",
+                "billing_details": {
+                  "address": {
+                    "city": null,
+                    "country": null,
+                    "line1": null,
+                    "line2": null,
+                    "postal_code": null,
+                    "state": null
+                  },
+                  "email": null,
+                  "name": null,
+                  "phone": null
+                },
+                "calculated_statement_descriptor": "Stripe",
+                "captured": true,
+                "created": 1598505391,
+                "currency": "usd",
+                "customer": null,
+                "description": null,
+                "destination": null,
+                "dispute": null,
+                "disputed": false,
+                "failure_code": null,
+                "failure_message": null,
+                "fraud_details": {
+                },
+                "invoice": null,
+                "livemode": false,
+                "metadata": {
+                },
+                "on_behalf_of": null,
+                "order": null,
+                "outcome": {
+                  "network_status": "approved_by_network",
+                  "reason": null,
+                  "risk_level": "normal",
+                  "risk_score": 62,
+                  "seller_message": "Payment complete.",
+                  "type": "authorized"
+                },
+                "paid": true,
+                "payment_intent": "pi_1HKdTPDdxaJLlE0xcP9mHKWH",
+                "payment_method": "pm_1HKdTPDdxaJLlE0xQkk0PrDD",
+                "payment_method_details": {
+                  "card": {
+                    "brand": "visa",
+                    "checks": {
+                      "address_line1_check": null,
+                      "address_postal_code_check": null,
+                      "cvc_check": null
+                    },
+                    "country": "US",
+                    "exp_month": 8,
+                    "exp_year": 2021,
+                    "fingerprint": "Hwj1EohYu6MmCRA3",
+                    "funding": "credit",
+                    "installments": null,
+                    "last4": "4242",
+                    "network": "visa",
+                    "three_d_secure": null,
+                    "wallet": null
+                  },
+                  "type": "card"
+                },
+                "receipt_email": null,
+                "receipt_number": null,
+                "receipt_url": "https://pay.stripe.com/receipts/acct_1HKYq9DdxaJLlE0x/ch_1HKdTPDdxaJLlE0xt46EiZr8/rcpt_HuSOCgZ9usnZcM9weddyndB0fv4FC0I",
+                "refunded": false,
+                "refunds": {
+                  "object": "list",
+                  "data": [
+
+                  ],
+                  "has_more": false,
+                  "total_count": 0,
+                  "url": "/v1/charges/ch_1HKdTPDdxaJLlE0xt46EiZr8/refunds"
+                },
+                "review": null,
+                "shipping": null,
+                "source": null,
+                "source_transfer": null,
+                "statement_descriptor": null,
+                "statement_descriptor_suffix": null,
+                "status": "succeeded",
+                "transfer_data": null,
+                "transfer_group": null
+              }
+            ],
+            "has_more": false,
+            "total_count": 1,
+            "url": "/v1/charges?payment_intent=pi_1HKdTPDdxaJLlE0xcP9mHKWH"
+          },
+          "client_secret": "pi_1HKdTPDdxaJLlE0xcP9mHKWH_secret_IXJYtasx2o7aiI2RtuvfCtG8C",
+          "confirmation_method": "automatic",
+          "created": 1598505391,
+          "currency": "usd",
+          "customer": null,
+          "description": null,
+          "invoice": null,
+          "last_payment_error": null,
+          "livemode": false,
+          "metadata": {
+          },
+          "next_action": null,
+          "on_behalf_of": null,
+          "payment_method": "pm_1HKdTPDdxaJLlE0xQkk0PrDD",
+          "payment_method_options": {
+            "card": {
+              "installments": null,
+              "network": null,
+              "request_three_d_secure": "automatic"
+            }
+          },
+          "payment_method_types": [
+            "card"
+          ],
+          "receipt_email": null,
+          "review": null,
+          "setup_future_usage": null,
+          "shipping": null,
+          "source": null,
+          "statement_descriptor": null,
+          "statement_descriptor_suffix": null,
+          "status": "succeeded",
+          "transfer_data": null,
+          "transfer_group": null
+        }
+  recorded_at: Thu, 27 Aug 2020 05:16:37 GMT
+recorded_with: VCR 6.0.0

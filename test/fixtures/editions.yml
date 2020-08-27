@@ -1,11 +1,14 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+available_one:
+  book: available
+  name: Hardcover
+  width_inches: 5.8
+  length_inches: 8.6
+  height_inches: 1.1
+  weight_ounces: 15.2
+available_two:
+  book: available
+  name: Paperback
+  width_inches: 5.8
+  length_inches: 8.6
+  height_inches: 1.1
+  weight_ounces: 10.2

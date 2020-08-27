@@ -42,6 +42,8 @@ gem 'honeybadger', '~> 4.0'
 
 gem 'rails_admin', '~> 2.0'
 
+gem 'stripe-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -66,6 +68,9 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  # Fake HTTP testing (for Stripe, etc)
+  gem 'vcr'
+  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
