@@ -71,6 +71,8 @@ group :test do
   # Fake HTTP testing (for Stripe, etc)
   gem 'vcr'
   gem 'webmock'
+  # Freeze time!
+  gem 'timecop'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -51,11 +51,11 @@ ActiveRecord::Schema.define(version: 2020_08_24_010753) do
     t.bigint "from_user_id", null: false
     t.bigint "to_user_id", null: false
     t.integer "status", null: false
-    t.string "easypost_id", null: false
-    t.string "label_url", null: false
-    t.string "easypost_tracker_id", null: false
-    t.string "easypost_tracking_url", null: false
-    t.string "stripe_payment_intent_id", null: false
+    t.string "easypost_id"
+    t.string "label_url"
+    t.string "easypost_tracker_id"
+    t.string "easypost_tracking_url"
+    t.string "stripe_payment_intent_id"
     t.datetime "received_at"
     t.boolean "sent_reminder_email"
     t.datetime "created_at", precision: 6, null: false

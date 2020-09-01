@@ -10,8 +10,7 @@ admin:
 available_owner:
   email: available-owner@antiracismbookexchange.com
   full_name: Available Owner
-  street: Academic Village
-  street2: 3700 Libra Dr, \#161111
+  street: "3700 Libra Dr # 161111"
   city: Orlando
   state: FL
   postal_code: 32816
@@ -21,8 +20,17 @@ one:
   email: one@antiracismbookexchange.com
   full_name: One One
   street: 3030 Radio Rd
-  city: Gainsville
+  city: Gainesville
   state: FL
   postal_code: 32603
+  admin: false
+  encrypted_password: <%= User.new.send(:password_digest, '123456') %>
+invalid_address:
+  email: invalid-address@antiracismbookexchange.com
+  full_name: Invalid Address
+  street: 1234 Foobar St
+  city: Seattle
+  state: WA
+  postal_code: 98195
   admin: false
   encrypted_password: <%= User.new.send(:password_digest, '123456') %>

@@ -12,6 +12,13 @@ class Shipment < ApplicationRecord
   ]
 
   validates_presence_of :received_at, if: :received?
+  validates_presence_of %i[
+    easypost_id
+    label_url
+    easypost_tracker_id
+    easypost_tracking_url
+    stripe_payment_intent_id
+  ], unless: :error?
 
   def create_easypost_shipment
     EasyPost::Shipment.create(

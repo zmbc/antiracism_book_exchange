@@ -17,18 +17,28 @@ end
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
-  parallelize(workers: :number_of_processors)
+  # parallelize(workers: :number_of_processors)
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
 
+  def self.vcr_test(name, &block)
+    self.test(name) do
+      VCR.use_cassette(name) do |cassette|
+        Timecop.freeze(cassette.originally_recorded_at || Time.now) do
+          instance_exec(Time.now, &block) # Time.now is according to Timecop
+        end
+      end
+    end
+  end
+
   def assert_same_address(easypost_address, user)
-    assert_equal easypost_address.name, user.full_name
-    assert_equal easypost_address.street1, user.street
-    assert_equal easypost_address.street2, user.street2 if user.street2.present?
-    assert_equal easypost_address.city, user.city
-    assert_equal easypost_address.state, user.state
+    assert_equal easypost_address.name.upcase, user.full_name.upcase
+    assert_equal easypost_address.street1.upcase, user.street.upcase
+    assert_equal easypost_address.street2.upcase, user.street2.upcase if user.street2.present?
+    assert_equal easypost_address.city.upcase, user.city.upcase
+    assert_equal easypost_address.state.upcase, user.state.upcase
   end
 end

@@ -1,0 +1,833 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/addresses?verify_strict%5B%5D=delivery
+    body:
+      encoding: UTF-8
+      string: '{"address":{"name":"Admin Admin","street1":"1410 NE Campus Parkway","city":"Seattle","state":"WA","zip":"98195","country":"US"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.7.1-p83
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - f411ec825f4ed1e0fe4544d20006a24d
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_5baf3ee4eb11480087344a7b81896e65"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.228730'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb6sj
+      X-Version-Label:
+      - easypost-202009011948-b8863aa040-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2wdc 59038857a6
+      - intlb1sj 0ab7988560
+      - intlb1wdc 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"adr_5baf3ee4eb11480087344a7b81896e65","object":"Address","created_at":"2020-09-01T22:57:36Z","updated_at":"2020-09-01T22:57:36Z","name":"ADMIN
+        ADMIN","company":null,"street1":"1410 NE CAMPUS PKWY","street2":"","city":"SEATTLE","state":"WA","zip":"98195-0003","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":47.65652,"longitude":-122.31268,"time_zone":"America/Los_Angeles"}}}}'
+  recorded_at: Tue, 01 Sep 2020 22:57:36 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/parcels
+    body:
+      encoding: UTF-8
+      string: '{"parcel":{"width":"5.8","length":"8.6","height":"1.1","weight":"15.2"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.7.1-p83
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - f411ec825f4ed1e1fe4544ed0006a269
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/parcels/prcl_44de808977f84b1d8392f8049d7757fd"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.030205'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb4sj
+      X-Version-Label:
+      - easypost-202009011948-b8863aa040-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2wdc 59038857a6
+      - intlb1wdc 0ab7988560
+      - intlb2sj 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"prcl_44de808977f84b1d8392f8049d7757fd","object":"Parcel","created_at":"2020-09-01T22:57:37Z","updated_at":"2020-09-01T22:57:37Z","length":8.6,"width":5.8,"height":1.1,"predefined_package":null,"weight":15.2,"mode":"test"}'
+  recorded_at: Tue, 01 Sep 2020 22:57:36 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/shipments
+    body:
+      encoding: UTF-8
+      string: '{"shipment":{"to_address":{"id":"adr_5baf3ee4eb11480087344a7b81896e65"},"from_address":{"id":"adr_5baf3ee4eb11480087344a7b81896e65"},"parcel":{"id":"prcl_44de808977f84b1d8392f8049d7757fd"},"options":{"special_rates_eligibility":"USPS.MEDIAMAIL"}}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.7.1-p83
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - f411ec855f4ed1e1fe4544f10006a274
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/shipments/shp_f6e8d9f63322433a92e3463c1e8a021d"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.254989'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb7sj
+      X-Version-Label:
+      - easypost-202009011948-b8863aa040-master
+      X-Backend:
+      - easypost
+      X-Canary:
+      - direct
+      X-Proxied:
+      - extlb2wdc 59038857a6
+      - intlb1wdc 0ab7988560
+      - intlb2sj 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"created_at":"2020-09-01T22:57:38Z","is_return":false,"messages":[],"mode":"test","options":{"special_rates_eligibility":"USPS.MEDIAMAIL","currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"reference":null,"status":"unknown","tracking_code":null,"updated_at":"2020-09-01T22:57:38Z","batch_id":null,"batch_status":null,"batch_message":null,"customs_info":null,"from_address":{"id":"adr_5baf3ee4eb11480087344a7b81896e65","object":"Address","created_at":"2020-09-01T22:57:36Z","updated_at":"2020-09-01T22:57:36Z","name":"ADMIN
+        ADMIN","company":null,"street1":"1410 NE CAMPUS PKWY","street2":"","city":"SEATTLE","state":"WA","zip":"98195-0003","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":47.65652,"longitude":-122.31268,"time_zone":"America/Los_Angeles"}}}},"insurance":null,"order_id":null,"parcel":{"id":"prcl_44de808977f84b1d8392f8049d7757fd","object":"Parcel","created_at":"2020-09-01T22:57:37Z","updated_at":"2020-09-01T22:57:37Z","length":8.6,"width":5.8,"height":1.1,"predefined_package":null,"weight":15.2,"mode":"test"},"postage_label":null,"rates":[{"id":"rate_aeeb5036a8d74bf88a58bd6a98818cd8","object":"Rate","created_at":"2020-09-01T22:57:38Z","updated_at":"2020-09-01T22:57:38Z","mode":"test","service":"First","carrier":"USPS","rate":"5.04","currency":"USD","retail_rate":"5.04","retail_currency":"USD","list_rate":"5.04","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_f6e8d9f63322433a92e3463c1e8a021d","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_264b96d429224335b1df5c5eadfaeb4d","object":"Rate","created_at":"2020-09-01T22:57:38Z","updated_at":"2020-09-01T22:57:38Z","mode":"test","service":"MediaMail","carrier":"USPS","rate":"2.80","currency":"USD","retail_rate":"2.80","retail_currency":"USD","list_rate":"2.80","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_f6e8d9f63322433a92e3463c1e8a021d","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_17f288232f2c41fb901736ed0991dc6e","object":"Rate","created_at":"2020-09-01T22:57:38Z","updated_at":"2020-09-01T22:57:38Z","mode":"test","service":"Express","carrier":"USPS","rate":"23.00","currency":"USD","retail_rate":"26.75","retail_currency":"USD","list_rate":"23.00","list_currency":"USD","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_f6e8d9f63322433a92e3463c1e8a021d","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_7c6d4a19a0254d45be8b95ec1d9ffe08","object":"Rate","created_at":"2020-09-01T22:57:38Z","updated_at":"2020-09-01T22:57:38Z","mode":"test","service":"Priority","carrier":"USPS","rate":"7.02","currency":"USD","retail_rate":"7.50","retail_currency":"USD","list_rate":"7.02","list_currency":"USD","delivery_days":1,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":1,"shipment_id":"shp_f6e8d9f63322433a92e3463c1e8a021d","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"},{"id":"rate_60d9e65f97ff452390481b9358ca1030","object":"Rate","created_at":"2020-09-01T22:57:38Z","updated_at":"2020-09-01T22:57:38Z","mode":"test","service":"ParcelSelect","carrier":"USPS","rate":"6.92","currency":"USD","retail_rate":"6.92","retail_currency":"USD","list_rate":"6.92","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_f6e8d9f63322433a92e3463c1e8a021d","carrier_account_id":"ca_f3f8e1cfd8434074aed3cbdedf3529b8"}],"refund_status":null,"scan_form":null,"selected_rate":null,"tracker":null,"to_address":{"id":"adr_5baf3ee4eb11480087344a7b81896e65","object":"Address","created_at":"2020-09-01T22:57:36Z","updated_at":"2020-09-01T22:57:36Z","name":"ADMIN
+        ADMIN","company":null,"street1":"1410 NE CAMPUS PKWY","street2":"","city":"SEATTLE","state":"WA","zip":"98195-0003","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":47.65652,"longitude":-122.31268,"time_zone":"America/Los_Angeles"}}}},"usps_zone":1,"return_address":{"id":"adr_5baf3ee4eb11480087344a7b81896e65","object":"Address","created_at":"2020-09-01T22:57:36Z","updated_at":"2020-09-01T22:57:36Z","name":"ADMIN
+        ADMIN","company":null,"street1":"1410 NE CAMPUS PKWY","street2":"","city":"SEATTLE","state":"WA","zip":"98195-0003","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":47.65652,"longitude":-122.31268,"time_zone":"America/Los_Angeles"}}}},"buyer_address":{"id":"adr_5baf3ee4eb11480087344a7b81896e65","object":"Address","created_at":"2020-09-01T22:57:36Z","updated_at":"2020-09-01T22:57:36Z","name":"ADMIN
+        ADMIN","company":null,"street1":"1410 NE CAMPUS PKWY","street2":"","city":"SEATTLE","state":"WA","zip":"98195-0003","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":47.65652,"longitude":-122.31268,"time_zone":"America/Los_Angeles"}}}},"forms":[],"fees":[],"id":"shp_f6e8d9f63322433a92e3463c1e8a021d","object":"Shipment"}'
+  recorded_at: Tue, 01 Sep 2020 22:57:36 GMT
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/payment_intents
+    body:
+      encoding: UTF-8
+      string: amount=320&currency=usd&payment_method=pm_card_chargeDeclinedIncorrectCvc&confirm=true&error_on_requires_action=true&capture_method=manual
+    headers:
+      User-Agent:
+      - Stripe/v1 RubyBindings/5.24.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-Telemetry:
+      - '{"last_request_metrics":{"request_id":"req_HqeXL2LBWvX6vg","request_duration_ms":551}}'
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"5.24.0","lang":"ruby","lang_version":"2.7.1 p83 (2020-03-31)","platform":"x86_64-linux","engine":"ruby","publisher":"stripe","uname":"Linux
+        version 4.15.0-112-generic (buildd@lcy01-amd64-021) (gcc version 5.4.0 20160609
+        (Ubuntu 5.4.0-6ubuntu1~16.04.12)) #113~16.04.1-Ubuntu SMP Fri Jul 10 04:37:08
+        UTC 2020","hostname":"zeb-inspiron-5520"}'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 402
+      message: Payment Required
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 01 Sep 2020 22:57:39 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '7754'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Request-Id:
+      - req_GY2Jmhzgsa48sf
+      Stripe-Version:
+      - '2020-03-02'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "error": {
+            "charge": "ch_1HMiQ2DdxaJLlE0xOGNTyYaO",
+            "code": "incorrect_cvc",
+            "doc_url": "https://stripe.com/docs/error-codes/incorrect-cvc",
+            "message": "Your card's security code is incorrect.",
+            "param": "cvc",
+            "payment_intent": {
+              "id": "pi_1HMiQ2DdxaJLlE0x3fd0zbBj",
+              "object": "payment_intent",
+              "amount": 320,
+              "amount_capturable": 0,
+              "amount_received": 0,
+              "application": null,
+              "application_fee_amount": null,
+              "canceled_at": null,
+              "cancellation_reason": null,
+              "capture_method": "manual",
+              "charges": {
+                "object": "list",
+                "data": [
+                  {
+                    "id": "ch_1HMiQ2DdxaJLlE0xOGNTyYaO",
+                    "object": "charge",
+                    "amount": 320,
+                    "amount_refunded": 0,
+                    "application": null,
+                    "application_fee": null,
+                    "application_fee_amount": null,
+                    "balance_transaction": null,
+                    "billing_details": {
+                      "address": {
+                        "city": null,
+                        "country": null,
+                        "line1": null,
+                        "line2": null,
+                        "postal_code": null,
+                        "state": null
+                      },
+                      "email": null,
+                      "name": null,
+                      "phone": null
+                    },
+                    "calculated_statement_descriptor": "Stripe",
+                    "captured": false,
+                    "created": 1599001058,
+                    "currency": "usd",
+                    "customer": null,
+                    "description": null,
+                    "destination": null,
+                    "dispute": null,
+                    "disputed": false,
+                    "failure_code": "incorrect_cvc",
+                    "failure_message": "Your card's security code is incorrect.",
+                    "fraud_details": {
+                    },
+                    "invoice": null,
+                    "livemode": false,
+                    "metadata": {
+                    },
+                    "on_behalf_of": null,
+                    "order": null,
+                    "outcome": {
+                      "network_status": "declined_by_network",
+                      "reason": "incorrect_cvc",
+                      "risk_level": "normal",
+                      "risk_score": 13,
+                      "seller_message": "The bank returned the decline code `incorrect_cvc`.",
+                      "type": "issuer_declined"
+                    },
+                    "paid": false,
+                    "payment_intent": "pi_1HMiQ2DdxaJLlE0x3fd0zbBj",
+                    "payment_method": "pm_1HMiQ2DdxaJLlE0xAnsiUA27",
+                    "payment_method_details": {
+                      "card": {
+                        "brand": "visa",
+                        "checks": {
+                          "address_line1_check": null,
+                          "address_postal_code_check": null,
+                          "cvc_check": null
+                        },
+                        "country": "US",
+                        "exp_month": 9,
+                        "exp_year": 2021,
+                        "fingerprint": "BPEydiQAOxpNsiPp",
+                        "funding": "credit",
+                        "installments": null,
+                        "last4": "0127",
+                        "network": "visa",
+                        "three_d_secure": null,
+                        "wallet": null
+                      },
+                      "type": "card"
+                    },
+                    "receipt_email": null,
+                    "receipt_number": null,
+                    "receipt_url": null,
+                    "refunded": false,
+                    "refunds": {
+                      "object": "list",
+                      "data": [
+
+                      ],
+                      "has_more": false,
+                      "total_count": 0,
+                      "url": "/v1/charges/ch_1HMiQ2DdxaJLlE0xOGNTyYaO/refunds"
+                    },
+                    "review": null,
+                    "shipping": null,
+                    "source": null,
+                    "source_transfer": null,
+                    "statement_descriptor": null,
+                    "statement_descriptor_suffix": null,
+                    "status": "failed",
+                    "transfer_data": null,
+                    "transfer_group": null
+                  }
+                ],
+                "has_more": false,
+                "total_count": 1,
+                "url": "/v1/charges?payment_intent=pi_1HMiQ2DdxaJLlE0x3fd0zbBj"
+              },
+              "client_secret": "pi_1HMiQ2DdxaJLlE0x3fd0zbBj_secret_OTjVC8sgUplH4sMrmFR8goMSd",
+              "confirmation_method": "automatic",
+              "created": 1599001058,
+              "currency": "usd",
+              "customer": null,
+              "description": null,
+              "invoice": null,
+              "last_payment_error": {
+                "charge": "ch_1HMiQ2DdxaJLlE0xOGNTyYaO",
+                "code": "incorrect_cvc",
+                "doc_url": "https://stripe.com/docs/error-codes/incorrect-cvc",
+                "message": "Your card's security code is incorrect.",
+                "param": "cvc",
+                "payment_method": {
+                  "id": "pm_1HMiQ2DdxaJLlE0xAnsiUA27",
+                  "object": "payment_method",
+                  "billing_details": {
+                    "address": {
+                      "city": null,
+                      "country": null,
+                      "line1": null,
+                      "line2": null,
+                      "postal_code": null,
+                      "state": null
+                    },
+                    "email": null,
+                    "name": null,
+                    "phone": null
+                  },
+                  "card": {
+                    "brand": "visa",
+                    "checks": {
+                      "address_line1_check": null,
+                      "address_postal_code_check": null,
+                      "cvc_check": null
+                    },
+                    "country": "US",
+                    "exp_month": 9,
+                    "exp_year": 2021,
+                    "fingerprint": "BPEydiQAOxpNsiPp",
+                    "funding": "credit",
+                    "generated_from": null,
+                    "last4": "0127",
+                    "networks": {
+                      "available": [
+                        "visa"
+                      ],
+                      "preferred": null
+                    },
+                    "three_d_secure_usage": {
+                      "supported": true
+                    },
+                    "wallet": null
+                  },
+                  "created": 1599001058,
+                  "customer": null,
+                  "livemode": false,
+                  "metadata": {
+                  },
+                  "type": "card"
+                },
+                "type": "card_error"
+              },
+              "livemode": false,
+              "metadata": {
+              },
+              "next_action": null,
+              "on_behalf_of": null,
+              "payment_method": null,
+              "payment_method_options": {
+                "card": {
+                  "installments": null,
+                  "network": null,
+                  "request_three_d_secure": "automatic"
+                }
+              },
+              "payment_method_types": [
+                "card"
+              ],
+              "receipt_email": null,
+              "review": null,
+              "setup_future_usage": null,
+              "shipping": null,
+              "source": null,
+              "statement_descriptor": null,
+              "statement_descriptor_suffix": null,
+              "status": "requires_payment_method",
+              "transfer_data": null,
+              "transfer_group": null
+            },
+            "payment_method": {
+              "id": "pm_1HMiQ2DdxaJLlE0xAnsiUA27",
+              "object": "payment_method",
+              "billing_details": {
+                "address": {
+                  "city": null,
+                  "country": null,
+                  "line1": null,
+                  "line2": null,
+                  "postal_code": null,
+                  "state": null
+                },
+                "email": null,
+                "name": null,
+                "phone": null
+              },
+              "card": {
+                "brand": "visa",
+                "checks": {
+                  "address_line1_check": null,
+                  "address_postal_code_check": null,
+                  "cvc_check": null
+                },
+                "country": "US",
+                "exp_month": 9,
+                "exp_year": 2021,
+                "fingerprint": "BPEydiQAOxpNsiPp",
+                "funding": "credit",
+                "generated_from": null,
+                "last4": "0127",
+                "networks": {
+                  "available": [
+                    "visa"
+                  ],
+                  "preferred": null
+                },
+                "three_d_secure_usage": {
+                  "supported": true
+                },
+                "wallet": null
+              },
+              "created": 1599001058,
+              "customer": null,
+              "livemode": false,
+              "metadata": {
+              },
+              "type": "card"
+            },
+            "type": "card_error"
+          }
+        }
+  recorded_at: Tue, 01 Sep 2020 22:57:36 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/shipments
+    body:
+      encoding: UTF-8
+      string: '{"start_datetime":"2020-09-01T15:57:36-07:00"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.7.1-p83
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - f411ec895f4ed1e3fe45450e0006a2b0
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.032209'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb2sj
+      X-Version-Label:
+      - easypost-202009011948-b8863aa040-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2wdc 59038857a6
+      - intlb1wdc 0ab7988560
+      - intlb2sj 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"shipments":[],"has_more":false}'
+  recorded_at: Tue, 01 Sep 2020 22:57:36 GMT
+- request:
+    method: get
+    uri: https://api.stripe.com/v1/payment_intents?created%5Bgte%5D=1599001056
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Stripe/v1 RubyBindings/5.24.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-Telemetry:
+      - '{"last_request_metrics":{"request_id":"req_HqeXL2LBWvX6vg","request_duration_ms":551}}'
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"5.24.0","lang":"ruby","lang_version":"2.7.1 p83 (2020-03-31)","platform":"x86_64-linux","engine":"ruby","publisher":"stripe","uname":"Linux
+        version 4.15.0-112-generic (buildd@lcy01-amd64-021) (gcc version 5.4.0 20160609
+        (Ubuntu 5.4.0-6ubuntu1~16.04.12)) #113~16.04.1-Ubuntu SMP Fri Jul 10 04:37:08
+        UTC 2020","hostname":"zeb-inspiron-5520"}'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 01 Sep 2020 22:57:40 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '6424'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+      Request-Id:
+      - req_RysG9dRUf1hRNO
+      Stripe-Version:
+      - '2020-03-02'
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "object": "list",
+          "data": [
+            {
+              "id": "pi_1HMiQ2DdxaJLlE0x3fd0zbBj",
+              "object": "payment_intent",
+              "amount": 320,
+              "amount_capturable": 0,
+              "amount_received": 0,
+              "application": null,
+              "application_fee_amount": null,
+              "canceled_at": null,
+              "cancellation_reason": null,
+              "capture_method": "manual",
+              "charges": {
+                "object": "list",
+                "data": [
+                  {
+                    "id": "ch_1HMiQ2DdxaJLlE0xOGNTyYaO",
+                    "object": "charge",
+                    "amount": 320,
+                    "amount_refunded": 0,
+                    "application": null,
+                    "application_fee": null,
+                    "application_fee_amount": null,
+                    "balance_transaction": null,
+                    "billing_details": {
+                      "address": {
+                        "city": null,
+                        "country": null,
+                        "line1": null,
+                        "line2": null,
+                        "postal_code": null,
+                        "state": null
+                      },
+                      "email": null,
+                      "name": null,
+                      "phone": null
+                    },
+                    "calculated_statement_descriptor": "Stripe",
+                    "captured": false,
+                    "created": 1599001058,
+                    "currency": "usd",
+                    "customer": null,
+                    "description": null,
+                    "destination": null,
+                    "dispute": null,
+                    "disputed": false,
+                    "failure_code": "incorrect_cvc",
+                    "failure_message": "Your card's security code is incorrect.",
+                    "fraud_details": {
+                    },
+                    "invoice": null,
+                    "livemode": false,
+                    "metadata": {
+                    },
+                    "on_behalf_of": null,
+                    "order": null,
+                    "outcome": {
+                      "network_status": "declined_by_network",
+                      "reason": "incorrect_cvc",
+                      "risk_level": "normal",
+                      "risk_score": 13,
+                      "seller_message": "The bank returned the decline code `incorrect_cvc`.",
+                      "type": "issuer_declined"
+                    },
+                    "paid": false,
+                    "payment_intent": "pi_1HMiQ2DdxaJLlE0x3fd0zbBj",
+                    "payment_method": "pm_1HMiQ2DdxaJLlE0xAnsiUA27",
+                    "payment_method_details": {
+                      "card": {
+                        "brand": "visa",
+                        "checks": {
+                          "address_line1_check": null,
+                          "address_postal_code_check": null,
+                          "cvc_check": null
+                        },
+                        "country": "US",
+                        "exp_month": 9,
+                        "exp_year": 2021,
+                        "fingerprint": "BPEydiQAOxpNsiPp",
+                        "funding": "credit",
+                        "installments": null,
+                        "last4": "0127",
+                        "network": "visa",
+                        "three_d_secure": null,
+                        "wallet": null
+                      },
+                      "type": "card"
+                    },
+                    "receipt_email": null,
+                    "receipt_number": null,
+                    "receipt_url": null,
+                    "refunded": false,
+                    "refunds": {
+                      "object": "list",
+                      "data": [
+
+                      ],
+                      "has_more": false,
+                      "total_count": 0,
+                      "url": "/v1/charges/ch_1HMiQ2DdxaJLlE0xOGNTyYaO/refunds"
+                    },
+                    "review": null,
+                    "shipping": null,
+                    "source": null,
+                    "source_transfer": null,
+                    "statement_descriptor": null,
+                    "statement_descriptor_suffix": null,
+                    "status": "failed",
+                    "transfer_data": null,
+                    "transfer_group": null
+                  }
+                ],
+                "has_more": false,
+                "total_count": 1,
+                "url": "/v1/charges?payment_intent=pi_1HMiQ2DdxaJLlE0x3fd0zbBj"
+              },
+              "client_secret": "pi_1HMiQ2DdxaJLlE0x3fd0zbBj_secret_OTjVC8sgUplH4sMrmFR8goMSd",
+              "confirmation_method": "automatic",
+              "created": 1599001058,
+              "currency": "usd",
+              "customer": null,
+              "description": null,
+              "invoice": null,
+              "last_payment_error": {
+                "charge": "ch_1HMiQ2DdxaJLlE0xOGNTyYaO",
+                "code": "incorrect_cvc",
+                "doc_url": "https://stripe.com/docs/error-codes/incorrect-cvc",
+                "message": "Your card's security code is incorrect.",
+                "param": "cvc",
+                "payment_method": {
+                  "id": "pm_1HMiQ2DdxaJLlE0xAnsiUA27",
+                  "object": "payment_method",
+                  "billing_details": {
+                    "address": {
+                      "city": null,
+                      "country": null,
+                      "line1": null,
+                      "line2": null,
+                      "postal_code": null,
+                      "state": null
+                    },
+                    "email": null,
+                    "name": null,
+                    "phone": null
+                  },
+                  "card": {
+                    "brand": "visa",
+                    "checks": {
+                      "address_line1_check": null,
+                      "address_postal_code_check": null,
+                      "cvc_check": null
+                    },
+                    "country": "US",
+                    "exp_month": 9,
+                    "exp_year": 2021,
+                    "fingerprint": "BPEydiQAOxpNsiPp",
+                    "funding": "credit",
+                    "generated_from": null,
+                    "last4": "0127",
+                    "networks": {
+                      "available": [
+                        "visa"
+                      ],
+                      "preferred": null
+                    },
+                    "three_d_secure_usage": {
+                      "supported": true
+                    },
+                    "wallet": null
+                  },
+                  "created": 1599001058,
+                  "customer": null,
+                  "livemode": false,
+                  "metadata": {
+                  },
+                  "type": "card"
+                },
+                "type": "card_error"
+              },
+              "livemode": false,
+              "metadata": {
+              },
+              "next_action": null,
+              "on_behalf_of": null,
+              "payment_method": null,
+              "payment_method_options": {
+                "card": {
+                  "installments": null,
+                  "network": null,
+                  "request_three_d_secure": "automatic"
+                }
+              },
+              "payment_method_types": [
+                "card"
+              ],
+              "receipt_email": null,
+              "review": null,
+              "setup_future_usage": null,
+              "shipping": null,
+              "source": null,
+              "statement_descriptor": null,
+              "statement_descriptor_suffix": null,
+              "status": "requires_payment_method",
+              "transfer_data": null,
+              "transfer_group": null
+            }
+          ],
+          "has_more": false,
+          "url": "/v1/payment_intents"
+        }
+  recorded_at: Tue, 01 Sep 2020 22:57:36 GMT
+recorded_with: VCR 6.0.0

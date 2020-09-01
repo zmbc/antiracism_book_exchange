@@ -17,7 +17,8 @@ class User < ApplicationRecord
       city: city,
       state: state,
       zip: postal_code,
-      country: 'US'
+      country: 'US',
+      verify_strict: ['delivery']
     )
   end
 end

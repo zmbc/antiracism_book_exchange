@@ -8,11 +8,11 @@ class CreateShipments < ActiveRecord::Migration[6.0]
       t.foreign_key :users, column: :from_user_id
       t.foreign_key :users, column: :to_user_id
       t.integer :status, null: false
-      t.string :easypost_id, null: false
-      t.string :label_url, null: false
-      t.string :easypost_tracker_id, null: false
-      t.string :easypost_tracking_url, null: false
-      t.string :stripe_payment_intent_id, null: false
+      t.string :easypost_id
+      t.string :label_url
+      t.string :easypost_tracker_id
+      t.string :easypost_tracking_url
+      t.string :stripe_payment_intent_id
       t.datetime :received_at
       t.boolean :sent_reminder_email
 

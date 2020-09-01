@@ -70,10 +70,8 @@ class Copy < ApplicationRecord
   protected
 
   def create_card_hold!(payment_method_id)
-    dummy_easypost_shipment = create_dummy_easypost_shipment
-
     Stripe::PaymentIntent.create({
-      amount: ModelUtils.easypost_rate_to_total_price_cents(dummy_easypost_shipment.lowest_rate),
+      amount: ModelUtils.easypost_rate_to_total_price_cents(create_dummy_easypost_shipment.lowest_rate),
       currency: 'usd',
       payment_method: payment_method_id,
       # Really confusing -- confirm: true does not actually charge the card.
@@ -108,11 +106,13 @@ class Copy < ApplicationRecord
     # Undo/refund shipment on Easypost -- note that this may fail. If it
     # does, at least in Honeybadger it will be very clear what we need to
     # do.
-    begin
-      easypost_shipment.refund
-    rescue EasyPost::Error => e
-      Honeybadger.notify(e)
-      # Don't re-raise so we can continue with any more rollback logic
+    if easypost_shipment.present?
+      begin
+        easypost_shipment.refund
+      rescue EasyPost::Error => e
+        Honeybadger.notify(e)
+        # Don't re-raise so we can continue with any more rollback logic
+      end
     end
   end
 
