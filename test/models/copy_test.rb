@@ -31,24 +31,51 @@ class CopyTest < ActiveSupport::TestCase
     assert_equal 'succeeded', pi.status
   end
 
-  def self.test_card_does_nothing(card_name, pm_id, payment_error_code = nil)
-    vcr_test "#{card_name} does nothing" do |start_time|
-      assert_no_difference('Shipment.count') do
-        assert_no_difference('Copy.where(status: :available).count') do
-          assert_no_difference('Copy.count') do
-            assert_raises(Stripe::CardError) do
-              Copy.reserve_and_ship_to_user!(books(:available), users(:one), pm_id)
-            end
+  def assert_does_nothing(
+    error_class:,
+    payment_method: 'pm_card_visa',
+    payment_error_code: nil,
+    db_shipment_saved_error: false,
+    stripe_status: 'canceled'
+  )
+    assert_difference('Shipment.count', db_shipment_saved_error ? 1 : 0) do
+      assert_no_difference('Copy.where(status: :available).count') do
+        assert_no_difference('Copy.count') do
+          assert_raises(error_class) do
+            Copy.reserve_and_ship_to_user!(books(:available), users(:one), payment_method)
           end
         end
       end
+    end
 
-      assert_equal 0, EasyPost::Shipment.all(start_datetime: start_time.iso8601).shipments.count
+    s = nil
+    if db_shipment_saved_error
+      s = Shipment.order(created_at: :desc).first
+      assert_equal users(:available_owner), s.from_user
+      assert_equal users(:one), s.to_user
+      assert_equal :error, s.status.to_sym
+    end
 
-      pis = Stripe::PaymentIntent.list(created: { gte: start_time.to_i })
-      assert_equal 1, pis.count
-      pi = pis.first
-      assert_equal payment_error_code, pi.last_payment_error.code if payment_error_code.present?
+    purchased_shipments = EasyPost::Shipment.all(start_datetime: Time.now.iso8601).shipments
+    non_refunded_shipments = purchased_shipments.filter { |eps| eps.refund_status != 'submitted' }
+    assert_equal 0, non_refunded_shipments.count
+
+    pis = Stripe::PaymentIntent.list(created: { gte: Time.now.to_i })
+    assert_equal 1, pis.count
+    pi = pis.first
+    assert_equal payment_error_code, pi.last_payment_error.code if payment_error_code.present?
+    assert_equal stripe_status, pi.status
+    assert_equal pi.id, s.stripe_payment_intent_id if db_shipment_saved_error
+  end
+
+  def self.test_card_does_nothing(card_name, pm_id, payment_error_code = nil)
+    vcr_test "#{card_name} does nothing" do
+      assert_does_nothing(
+        error_class: Stripe::CardError,
+        payment_method: pm_id,
+        payment_error_code: payment_error_code,
+        stripe_status: 'requires_payment_method'
+      )
     end
   end
 
@@ -94,41 +121,23 @@ class CopyTest < ActiveSupport::TestCase
     'processing_error'
   )
 
-  vcr_test 'invalid address does nothing' do |start_time|
+  vcr_test 'invalid address does nothing' do
     original_create = EasyPost::Address.method(:create)
     error = lambda { |options|
-      raise EasyPost::Error if options[:name] == users(:invalid_address).full_name
+      raise EasyPost::Error if options[:name] == users(:one).full_name
 
       return original_create.call(options)
     }
 
-    assert_difference('Shipment.count', 1) do
-      assert_no_difference('Copy.where(status: :available).count') do
-        assert_no_difference('Copy.count') do
-          EasyPost::Address.stub(:create, error) do
-            assert_raises(EasyPost::Error) do
-              Copy.reserve_and_ship_to_user!(books(:available), users(:invalid_address), 'pm_card_visa')
-            end
-          end
-        end
-      end
+    EasyPost::Address.stub(:create, error) do
+      assert_does_nothing(
+        error_class: EasyPost::Error,
+        db_shipment_saved_error: true
+      )
     end
-
-    s = Shipment.order(created_at: :desc).first
-    assert_equal users(:available_owner), s.from_user
-    assert_equal users(:invalid_address), s.to_user
-    assert_equal :error, s.status.to_sym
-
-    assert_equal 0, EasyPost::Shipment.all(start_datetime: start_time.iso8601).shipments.count
-
-    pis = Stripe::PaymentIntent.list(created: { gte: start_time.to_i })
-    assert_equal 1, pis.count
-    pi = pis.first
-    assert_equal 'canceled', pi.status
-    assert_equal pi.id, s.stripe_payment_intent_id
   end
 
-  vcr_test 'shipment buy failure does nothing' do |start_time|
+  vcr_test 'shipment buy failure does nothing' do
     original_create = EasyPost::Shipment.method(:create)
     create_mock = lambda { |options|
       shipment = original_create.call(options)
@@ -138,37 +147,15 @@ class CopyTest < ActiveSupport::TestCase
       return shipment
     }
 
-    assert_difference('Shipment.count', 1) do
-      assert_no_difference('Copy.where(status: :available).count') do
-        assert_no_difference('Copy.count') do
-          EasyPost::Shipment.stub(:create, create_mock) do
-            assert_raises(EasyPost::Error) do
-              Copy.reserve_and_ship_to_user!(books(:available), users(:one), 'pm_card_visa')
-            end
-          end
-        end
-      end
+    EasyPost::Shipment.stub(:create, create_mock) do
+      assert_does_nothing(
+        error_class: EasyPost::Error,
+        db_shipment_saved_error: true
+      )
     end
-
-    s = Shipment.order(created_at: :desc).first
-    assert_equal users(:available_owner), s.from_user
-    assert_equal users(:one), s.to_user
-    assert_equal :error, s.status.to_sym
-
-    assert_equal 0, EasyPost::Shipment.all(start_datetime: start_time.iso8601).shipments.count
-    non_purchased = EasyPost::Shipment.all(purchased: false, start_datetime: start_time.iso8601).shipments
-    non_purchased = non_purchased.filter { |eps| eps.to_address.name.upcase == users(:one).full_name.upcase }
-    assert_equal 1, non_purchased.count
-    assert_equal non_purchased.first.id, s.easypost_id
-
-    pis = Stripe::PaymentIntent.list(created: { gte: start_time.to_i })
-    assert_equal 1, pis.count
-    pi = pis.first
-    assert_equal 'canceled', pi.status
-    assert_equal pi.id, s.stripe_payment_intent_id
   end
 
-  vcr_test 'shipment database failure does nothing' do |start_time|
+  vcr_test 'shipment database failure does nothing' do
     original_new = Shipment.method(:new)
     new_mock = lambda { |options|
       shipment = original_new.call(options)
@@ -182,66 +169,22 @@ class CopyTest < ActiveSupport::TestCase
       return shipment
     }
 
-    assert_difference('Shipment.count', 1) do
-      assert_no_difference('Copy.where(status: :available).count') do
-        assert_no_difference('Copy.count') do
-          Shipment.stub(:new, new_mock) do
-            assert_raises(ActiveRecord::RecordInvalid) do
-              Copy.reserve_and_ship_to_user!(books(:available), users(:one), 'pm_card_visa')
-            end
-          end
-        end
-      end
+    Shipment.stub(:new, new_mock) do
+      assert_does_nothing(
+        error_class: ActiveRecord::RecordInvalid,
+        db_shipment_saved_error: true
+      )
     end
-
-    s = Shipment.order(created_at: :desc).first
-    assert_equal users(:available_owner), s.from_user
-    assert_equal users(:one), s.to_user
-    assert_equal :error, s.status.to_sym
-
-    purchased = EasyPost::Shipment.all(start_datetime: start_time.iso8601).shipments
-    assert_equal 1, purchased.count
-    purchased = purchased.first
-    assert_equal purchased.id, s.easypost_id
-    assert_equal 'submitted', purchased.refund_status
-
-    pis = Stripe::PaymentIntent.list(created: { gte: start_time.to_i })
-    assert_equal 1, pis.count
-    pi = pis.first
-    assert_equal 'canceled', pi.status
-    assert_equal pi.id, s.stripe_payment_intent_id
   end
 
-  vcr_test 'charge failure does nothing' do |start_time|
+  vcr_test 'charge failure does nothing' do
     error = proc { raise Stripe::CardError.new('No', 'Money!') }
 
-    assert_difference('Shipment.count', 1) do
-      assert_no_difference('Copy.where(status: :available).count') do
-        assert_no_difference('Copy.count') do
-          Stripe::PaymentIntent.stub(:capture, error) do
-            assert_raises(Stripe::CardError) do
-              Copy.reserve_and_ship_to_user!(books(:available), users(:one), 'pm_card_visa')
-            end
-          end
-        end
-      end
+    Stripe::PaymentIntent.stub(:capture, error) do
+      assert_does_nothing(
+        error_class: Stripe::CardError,
+        db_shipment_saved_error: true
+      )
     end
-
-    s = Shipment.order(created_at: :desc).first
-    assert_equal users(:available_owner), s.from_user
-    assert_equal users(:one), s.to_user
-    assert_equal :error, s.status.to_sym
-
-    purchased = EasyPost::Shipment.all(start_datetime: start_time.iso8601).shipments
-    assert_equal 1, purchased.count
-    purchased = purchased.first
-    assert_equal purchased.id, s.easypost_id
-    assert_equal 'submitted', purchased.refund_status
-
-    pis = Stripe::PaymentIntent.list(created: { gte: start_time.to_i })
-    assert_equal 1, pis.count
-    pi = pis.first
-    assert_equal 'canceled', pi.status
-    assert_equal pi.id, s.stripe_payment_intent_id
   end
 end
