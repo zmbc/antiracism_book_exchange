@@ -62,7 +62,8 @@ class Copy < ApplicationRecord
     rescue StandardError
       rollback_external_changes!(intent, easypost_shipment)
 
-      s.update!(status: :error)
+      s.status = :error
+      s.save!
       raise
     end
   end

@@ -21,12 +21,16 @@ class Shipment < ApplicationRecord
   ], unless: :error?
 
   def create_easypost_shipment
-    EasyPost::Shipment.create(
+    easypost_shipment = EasyPost::Shipment.create(
       to_address: to_user.create_easypost_address,
       from_address: from_user.create_easypost_address,
       parcel: copy.edition.create_easypost_parcel,
       options: { special_rates_eligibility: 'USPS.MEDIAMAIL' }
     )
+
+    self.easypost_id = easypost_shipment.id
+
+    easypost_shipment
   end
 
   def buy_easypost_shipment!(easypost_shipment: nil)
@@ -35,7 +39,6 @@ class Shipment < ApplicationRecord
     easypost_shipment.buy(rate: easypost_shipment.lowest_rate)
     label = easypost_shipment.label(file_format: 'PDF').postage_label
 
-    self.easypost_id = easypost_shipment.id
     self.label_url = label.label_pdf_url
     self.easypost_tracker_id = easypost_shipment.tracker.id
     self.easypost_tracking_url = easypost_shipment.tracker.public_url
