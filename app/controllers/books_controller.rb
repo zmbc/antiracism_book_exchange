@@ -20,7 +20,6 @@ class BooksController < ApplicationController
     NotifyWaitlistJob.perform_later(@book) if @book.waitlist?
   end
 
-  # Rewrite this to be two separate actions: reserving a copy and joining waitlist
   def reserve_copy
     if @book.waitlist?
       redirect_to join_waitlist_path(book: @book), notice: 'This book is now waitlisted.'
@@ -29,7 +28,6 @@ class BooksController < ApplicationController
   end
 
   def post_reserve_copy
-    # TODO: Test this method
     if @book.waitlist?
       redirect_to join_waitlist_path(book: @book), notice: 'This book is now waitlisted.'
       return
