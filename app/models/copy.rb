@@ -57,8 +57,6 @@ class Copy < ApplicationRecord
     begin
       easypost_shipment = s.buy_easypost_shipment!
       s.save!
-
-      capture_funds!(intent, ModelUtils.easypost_rate_to_total_price_cents(easypost_shipment.selected_rate))
     rescue StandardError
       rollback_external_changes!(intent, easypost_shipment)
 
@@ -90,15 +88,6 @@ class Copy < ApplicationRecord
       from_address: address,
       parcel: edition.create_easypost_parcel,
       options: { special_rates_eligibility: 'USPS.MEDIAMAIL' }
-    )
-  end
-
-  def capture_funds!(intent, amount)
-    Stripe::PaymentIntent.capture(
-      intent.id,
-      {
-        amount_to_capture: amount
-      }
     )
   end
 

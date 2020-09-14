@@ -2,7 +2,7 @@ require 'test_helper'
 require 'minitest/autorun'
 
 class CopyTest < ActiveSupport::TestCase
-  vcr_test 'successful reserve charges card and ships' do
+  vcr_test 'successful reserve puts hold on card and ships' do
     c = nil
 
     assert_difference('Shipment.count', 1) do
@@ -26,9 +26,9 @@ class CopyTest < ActiveSupport::TestCase
 
     pi = Stripe::PaymentIntent.retrieve(s.stripe_payment_intent_id)
     assert_equal 320, pi.amount
-    assert_equal 0, pi.amount_capturable
-    assert_equal 320, pi.amount_received
-    assert_equal 'succeeded', pi.status
+    assert_equal 320, pi.amount_capturable
+    assert_equal 0, pi.amount_received
+    assert_equal 'requires_capture', pi.status
   end
 
   def assert_does_nothing(
@@ -172,17 +172,6 @@ class CopyTest < ActiveSupport::TestCase
     Shipment.stub(:new, new_mock) do
       assert_does_nothing(
         error_class: ActiveRecord::RecordInvalid,
-        db_shipment_saved_error: true
-      )
-    end
-  end
-
-  vcr_test 'charge failure does nothing' do
-    error = proc { raise Stripe::CardError.new('No', 'Money!') }
-
-    Stripe::PaymentIntent.stub(:capture, error) do
-      assert_does_nothing(
-        error_class: Stripe::CardError,
         db_shipment_saved_error: true
       )
     end
