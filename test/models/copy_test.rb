@@ -2,13 +2,17 @@ require 'test_helper'
 require 'minitest/autorun'
 
 class CopyTest < ActiveSupport::TestCase
+  include ActionMailer::TestHelper
+
   vcr_test 'successful reserve puts hold on card and ships' do
     c = nil
 
-    assert_difference('Shipment.count', 1) do
-      assert_difference('Copy.where(status: :available).count', -1) do
-        assert_no_difference('Copy.count') do
-          c = Copy.reserve_and_ship_to_user!(books(:available), users(:one), 'pm_card_visa')
+    assert_emails 2 do
+      assert_difference('Shipment.count', 1) do
+        assert_difference('Copy.where(status: :available).count', -1) do
+          assert_no_difference('Copy.count') do
+            c = Copy.reserve_and_ship_to_user!(books(:available), users(:one), 'pm_card_visa')
+          end
         end
       end
     end
@@ -38,11 +42,13 @@ class CopyTest < ActiveSupport::TestCase
     db_shipment_saved_error: false,
     stripe_status: 'canceled'
   )
-    assert_difference('Shipment.count', db_shipment_saved_error ? 1 : 0) do
-      assert_no_difference('Copy.where(status: :available).count') do
-        assert_no_difference('Copy.count') do
-          assert_raises(error_class) do
-            Copy.reserve_and_ship_to_user!(books(:available), users(:one), payment_method)
+    assert_no_emails do
+      assert_difference('Shipment.count', db_shipment_saved_error ? 1 : 0) do
+        assert_no_difference('Copy.where(status: :available).count') do
+          assert_no_difference('Copy.count') do
+            assert_raises(error_class) do
+              Copy.reserve_and_ship_to_user!(books(:available), users(:one), payment_method)
+            end
           end
         end
       end

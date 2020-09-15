@@ -39,72 +39,10 @@ class Copy < ApplicationRecord
   end
 
   def ship_to_user!(to_user, payment_method_id)
-    # Error handling is pretty tricky here. We need to make actions across multiple
-    # APIs atomic--or as atomic as possible. The thing we want to *really* avoid
-    # is having to refund someone's card. So we do that last. However, we place
-    # a "hold"/pre-authorization on the card before we buy the shipment, because
-    # we'd rather not be buying shipments left and right when people are making
-    # typos on their card number. The authorization creates a *virtual*
-    # guarantee that the charge will succeed, but it's not 100%. Apparently,
-    # refunding on EasyPost can often fail if it's done too quickly--we could
-    # create a cron job to make sure errored shipments get refunded, or just do
-    # them manually when we see it in Honeybadger.
-    intent = create_card_hold!(payment_method_id)
-
-    s = new_shipment_to(to_user)
-    s.stripe_payment_intent_id = intent.id
-
-    begin
-      easypost_shipment = s.buy_easypost_shipment!
-      s.save!
-    rescue StandardError
-      rollback_external_changes!(intent, easypost_shipment)
-
-      s.status = :error
-      s.save!
-      raise
-    end
+    new_shipment_to(to_user).initiate(payment_method_id)
   end
 
   protected
-
-  def create_card_hold!(payment_method_id)
-    Stripe::PaymentIntent.create({
-      amount: ModelUtils.easypost_rate_to_total_price_cents(create_dummy_easypost_shipment.lowest_rate),
-      currency: 'usd',
-      payment_method: payment_method_id,
-      # Really confusing -- confirm: true does not actually charge the card.
-      # It only confirms the hold.
-      confirm: true,
-      error_on_requires_action: true,
-      capture_method: 'manual'
-    })
-  end
-
-  def create_dummy_easypost_shipment
-    address = User.first.create_easypost_address
-    EasyPost::Shipment.create(
-      to_address: address,
-      from_address: address,
-      parcel: edition.create_easypost_parcel,
-      options: { special_rates_eligibility: 'USPS.MEDIAMAIL' }
-    )
-  end
-
-  def rollback_external_changes!(intent, easypost_shipment)
-    Stripe::PaymentIntent.cancel(intent.id)
-    # Undo/refund shipment on Easypost -- note that this may fail. If it
-    # does, at least in Honeybadger it will be very clear what we need to
-    # do.
-    if easypost_shipment.present?
-      begin
-        easypost_shipment.refund
-      rescue EasyPost::Error => e
-        Honeybadger.notify(e)
-        # Don't re-raise so we can continue with any more rollback logic
-      end
-    end
-  end
 
   def new_shipment_to(to_user)
     Shipment.new(
