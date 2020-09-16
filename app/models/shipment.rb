@@ -30,43 +30,58 @@ class Shipment < ApplicationRecord
     # them manually when we see it in Honeybadger.
     create_card_hold!(payment_method_id)
 
-    begin
+    status_error_on_failure do
       buy_easypost_shipment!
-
-      send_initial_emails
+      save!
+      send_pending_emails
     rescue StandardError
       rollback_external_changes!
-
-      self.status = :error
-      save!
       raise
     end
   end
 
   def confirm_shipped
-    self.status = :shipping
-    save!
+    update! status: :shipping
 
-    begin
+    status_error_on_failure do
       charge_card!
-      send_shipped_emails
-    rescue StandardError
-      self.status = :error
-      save!
-      raise
+      send_shipping_emails
+    end
+  end
+
+  def confirm_did_not_ship
+    update! status: :did_not_ship
+
+    status_error_on_failure do
+      copy.update! status: :failed
+      rollback_external_changes!
+      send_did_not_ship_emails
     end
   end
 
   protected
 
-  def send_initial_emails
-    mailer.please_ship_email.deliver_later
-    mailer.reservation_confirmation_email.deliver_later
+  def status_error_on_failure
+    yield
+  rescue StandardError
+    self.status = :error
+    save!
+    raise
   end
 
-  def send_shipped_emails
-    mailer.book_received_email.deliver_later
-    mailer.book_on_its_way_email.deliver_later
+  def send_pending_emails
+    mailer.pending_email_to_sender.deliver_later
+    mailer.pending_email_to_receiver.deliver_later
+  end
+
+  def send_shipping_emails
+    mailer.shipping_email_to_sender.deliver_later
+    mailer.shipping_email_to_receiver.deliver_later
+  end
+
+  def send_did_not_ship_emails
+    mailer.did_not_ship_email_to_sender.deliver_later
+    mailer.did_not_ship_email_to_receiver.deliver_later
   end
 
   def mailer
@@ -110,8 +125,8 @@ class Shipment < ApplicationRecord
     # does, at least in Honeybadger it will be very clear what we need to
     # do.
     begin
-      @easypost_shipment.refund if @easypost_shipment.present? &&
-                                   @easypost_shipment.selected_rate.present?
+      easypost_shipment.refund if easypost_shipment.present? &&
+                                  easypost_shipment.selected_rate.present?
     rescue EasyPost::Error => e
       Honeybadger.notify(e)
       # Don't re-raise so we can continue with any more rollback logic
@@ -119,16 +134,14 @@ class Shipment < ApplicationRecord
   end
 
   def buy_easypost_shipment!
-    @easypost_shipment ||= create_easypost_shipment
+    create_easypost_shipment unless easypost_shipment.present?
 
-    @easypost_shipment.buy(rate: @easypost_shipment.lowest_rate)
-    label = @easypost_shipment.label(file_format: 'PDF').postage_label
+    easypost_shipment.buy(rate: easypost_shipment.lowest_rate)
+    label = easypost_shipment.label(file_format: 'PDF').postage_label
 
     self.label_url = label.label_pdf_url
-    self.easypost_tracker_id = @easypost_shipment.tracker.id
-    self.easypost_tracking_url = @easypost_shipment.tracker.public_url
-
-    save!
+    self.easypost_tracker_id = easypost_shipment.tracker.id
+    self.easypost_tracking_url = easypost_shipment.tracker.public_url
   end
 
   def create_easypost_shipment
@@ -139,8 +152,16 @@ class Shipment < ApplicationRecord
       options: { special_rates_eligibility: 'USPS.MEDIAMAIL' }
     )
 
-    self.easypost_id = eps.id
+    self.easypost_shipment = eps
+  end
 
-    eps
+  def easypost_shipment
+    @easypost_shipment ||=
+      easypost_id.present? ? EasyPost::Shipment.retrieve(easypost_id) : nil
+  end
+
+  def easypost_shipment=(shipment)
+    self.easypost_id = shipment.id
+    @easypost_shipment = shipment
   end
 end

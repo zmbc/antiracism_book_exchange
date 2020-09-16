@@ -9,6 +9,7 @@ class Copy < ApplicationRecord
     pending_waitlist_match
     pending_waitlist_confirm
     reserved
+    failed
   ]
 
   validates_presence_of :waitlist_entry, if: :pending_waitlist_confirm?
